@@ -54,7 +54,7 @@ class Note: Equatable, CustomStringConvertible {
 	}
 	
 	static func == (_ ls: Note, _ rs: Note) -> Bool {
-		return ls.num == rs.num
+		return ls.name == rs.name
 	}
 	
 	lazy var isSharp = self.name.contains("#")
@@ -70,15 +70,39 @@ class Note: Equatable, CustomStringConvertible {
 	}
 
 	func transpose(from sourceKey: Key, to destKey: Key) -> Note {
-		// note diatonic to source key
+		// note diatonic to source key, using degrees
 		if let degree = sourceKey.notes.index(of: self) {
 			return destKey[degree]
 		}
 		
-		// note not diatonic to source key
+		// note not diatonic to source key, using intervals
 		let tonic = sourceKey[0]
 		let interval = abs(tonic.num - self.num)
 		let newNote = destKey[0].transpose(interval)
-		return newNote
+		// this new note is initialized with the first possible name.
+		// if there's only one possible name anyway, we're done.
+		let possibleNames = Music.noteNames[newNote.num]
+		guard possibleNames.count > 1 else { return newNote }
+		
+		// otherwise, we need to check our musical spelling
+		let keyPos = Music.circleOfFifths.index(of: destKey)!
+		let noteDistances = possibleNames.map { (noteName) -> Int in
+			// this doesn't handle one of the possibleNames being a natural note! (see else clause below)
+			var distance = 0
+			if let notePos = Music.orderOfAccidentals.index(of: Note(noteName)!) {
+				distance = abs(keyPos - notePos)
+			} else {
+				// TO-DO: note isn't an accidental. what do we do?
+			}
+			return distance
+		}
+		let closest = min(noteDistances[0], noteDistances[1])
+		let closestIndex = noteDistances.index(of: closest)!
+		let closestNoteName = possibleNames[closestIndex]
+		
+		
+		
+		return Note(closestNoteName)!
+		
 	}
 }

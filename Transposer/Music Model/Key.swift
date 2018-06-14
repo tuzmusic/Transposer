@@ -14,7 +14,10 @@ class Key: Equatable {
 	var notes = [Note]()
 	var name: String?
 	lazy var noteNames = notes.string
-	lazy var keySig = notes.filter { $0.isSharp || $0.isFlat }.sorted {
+	lazy var keySig = notes.filter { $0.isSharp || $0.isFlat }
+	
+	// WARNING: DO NOT COMBINE DEFINITIONS FOR keySig AND sortedKeySig (keySig = currentDefinition.sorted{asBelow}). This would cause recursion error in Music.orderOfAccidentals
+	lazy var sortedKeySig = keySig.sorted {
 		let first = self.value > 0 ? $1 : $0
 		let second = first == $1 ? $0 : $1
 		return Music.orderOfAccidentals.index(of: first)! > Music.orderOfAccidentals.index(of: second)!
@@ -23,9 +26,6 @@ class Key: Equatable {
 	subscript(degree: Int) -> Note {
 		return notes[degree]
 	}
-	
-	lazy var sharps = notes.filter{$0.isSharp}
-	lazy var flats = notes.filter{$0.isFlat}
 	
 	lazy var value = notes.reduce(0) { $0 + (Music.accidentalSymbols[$1.name!.last!]?.rawValue ?? 0) }		
 	
@@ -36,9 +36,16 @@ class Key: Equatable {
 	
 	convenience init?(_ scaleName: String) {
 		let parts = scaleName.split(separator: " ").map { String($0) }
-		if let pattern = Music.scalePatterns[parts[1]], let tonic = Note(parts[0]) {
-			self.init(tonic: tonic, pattern: pattern)
-			self.name = scaleName
+		if let tonic = Note(parts[0]) {
+			if parts.count == 1 {
+				self.init(tonic: tonic, pattern: Music.scalePatterns["major"]!)
+				self.name = parts[0] + " major"
+			} else if let pattern = Music.scalePatterns[parts[1]] {
+				self.init(tonic: tonic, pattern: pattern)
+				self.name = scaleName
+			} else {
+				return nil
+			}
 		} else {
 			return nil
 		}

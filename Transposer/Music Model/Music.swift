@@ -29,9 +29,9 @@ class Music {
 	static let accidentalSymbols: [Character : Music.Accidental] = ["#" :
 		.sharp, "b" : .flat]
 	
-	static let circleOfFifthsKeys = circleOfFifths()
-	static let circleOfFifthsNames = circleOfFifths().map {$0.name!.split(separator: " ")[0]}.joined(separator: " ")
-	static let orderOfAccidentals = Music.circleOfFifthsKeys.map { Music.newAcc3(in: $0) }
+	static let circleOfFifths = allMajorKeys.sorted { return $0.value < $1.value }
+	static let circleOfFifthsNames = circleOfFifths.map {$0.name!.split(separator: " ")[0]}.joined(separator: " ")
+	static let orderOfAccidentals = Music.circleOfFifths.map { Music.newAcc3(in: $0) }
 	
 	static let allMajorKeys = getAllMajorKeys()
 	class func getAllMajorKeys() -> [Key] {
@@ -42,22 +42,14 @@ class Music {
 		}
 		return allMajorKeys
 	}
-	class func circleOfFifths() -> [Key] {
-		return allMajorKeys.sorted {
-			// VERY temporary kind of solution. should eventually deal with a "score" where flats are -1 and sharps are +1
-			return $0.keySig.filter { $0.isSharp }.count-$0.keySig.filter { $0.isFlat }.count < $1.keySig.filter { $0.isSharp }.count-$1.keySig.filter { $0.isFlat }.count
-		}
-	}
+	
 	
 	class func newAcc3(in key: Key) -> Note? {
 		// get comparison key by comparing values
-		let prev = key.value > 0
-			? allMajorKeys.first(where:) { $0.value == key.value - 1 }!
-			: key.value < 0
-			? allMajorKeys.first(where:) { $0.value == key.value + 1 }!
-			: nil
+		guard key.value != 0 else { return nil }
+		guard let prevKey = allMajorKeys.first(where: { $0.value == key.value + (key.value < 0 ? 1 : -1 )})
+			else { return nil }
 		
-		guard let prevKey = prev else { return nil }
 		return key.keySig.first(where:) { !prevKey.keySig.contains($0) } ?? nil
 	}
 		
@@ -66,7 +58,7 @@ class Music {
 
 extension Music {
 	// Testing and trying
-	
+	/*
 	class func sortedKeySig(for key: Key) -> [Note] {
 		var rawKeySig = key.keySig
 		var sortedKeySig = [Note]()
@@ -107,6 +99,7 @@ extension Music {
 		guard let prevKey = prev else { return nil }
 		return key.keySig.first(where:) { !prevKey.keySig.contains($0) } ?? nil
 	}
+	*/
 }
 
 

@@ -10,30 +10,29 @@ import XCTest
 @testable import Transposer
 
 class TransposerTests: XCTestCase {
-    
-	override func setUp() {
-		super.setUp()
+	
+	func testCircleOfFifths() {
+		let names = "Cb Gb Db Ab Eb Bb F C G D A E B F# C#"
+		XCTAssertEqual(names, Music.circleOfFifthsNames)
 	}
-    
-    override func tearDown() {
-        super.tearDown()
-    }
-    
-    func testOrderOfAccidentals() {
-		let accsInOrder = Music.circleOfFifthsKeys
+	
+   func testOrderOfAccidentals() {
+		let accsInOrder = Music.circleOfFifths
 			.map { Music.newAcc3(in: $0)?.name! ?? "" }
 			.joined(separator: " ")
 		XCTAssertEqual(accsInOrder, TestConstants.orderOfAccidentals)
-		
+	}
+	
+	func testSortedKeySig() {
 		let eMaj = Key("E major")!
 		let dflatMaj = Key("Db major")!
 		
-		let sharpsInEMaj = eMaj.keySig
+		let sharpsInEMaj = eMaj.sortedKeySig
 		let sharpsInEMajString = sharpsInEMaj.string
 		var correctOrder = "F# C# G# D#"
 		XCTAssertEqual(sharpsInEMajString, correctOrder)
 		
-		let flatsInDb = dflatMaj.keySig
+		let flatsInDb = dflatMaj.sortedKeySig
 		let flatsInDbString = flatsInDb.string
 		correctOrder = "Bb Eb Ab Db Gb"
 		XCTAssertEqual(flatsInDbString, correctOrder)
@@ -66,6 +65,9 @@ class TransposerTests: XCTestCase {
 		let bb = Note("Bb")!
 		let gb = Note("Gb")!
 		result = bb.transpose(from: cmaj, to: abmaj)
+		
+		let count = Music.noteNames[result.num].count
+		XCTAssert(count>1)
 		XCTAssertEqual(result, gb)
 		
 		let f = Note("F")!
@@ -87,4 +89,35 @@ class TransposerTests: XCTestCase {
 		result = fs.transpose(from: cmaj, to: csmaj)
 		XCTAssertEqual(result, Note("G")!)
 	}
+	
+	func testTranspositionSpellings() {
+		var result: Note
+		let cmaj = Key("C")!
+		let abmaj = Key("Ab")!
+		
+		// b7 degree
+		let bb = Note("Bb")!
+		result = bb.transpose(from: cmaj, to: abmaj)
+		XCTAssertEqual(result, Note("Gb")!)
+		
+		// #2 degree - F# in Fmajor
+		let cs = Note("C#")!
+		let fmaj = Key("F major")!
+		result = cs.transpose(from: cmaj, to: fmaj) // error is here
+		XCTAssertEqual(result, Note("F#")!)
+		
+		// Bb in D major? (b6 degree) -- equidistant! oh no!
+		let ab = Note("Ab")!
+		let dmaj = Key("D major")!
+		result = ab.transpose(from: cmaj, to: dmaj)
+		XCTAssertEqual(result, Note("Bb")!)
+
+		// #4 degree
+		let fs = Note("F#")!
+		let fsmaj = Key("F# major")!
+		result = fs.transpose(from: cmaj, to: fsmaj)
+		XCTAssertEqual(result, Note("B#")!)
+	}
+	
 }
+
