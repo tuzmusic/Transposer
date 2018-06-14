@@ -1,5 +1,11 @@
 import Foundation
 
+extension Array where Element == Note {
+	var string: String {
+		return self.map{$0.name}.joined(separator: " ")
+	}
+}
+
 class Music {
 	static let scalePatterns = ["major" : [0, 2, 4, 5, 7, 9, 11, 12]]
 	static let noteNames = [     ["C","B#"],
@@ -42,6 +48,42 @@ class Music {
 			return $0.keySig.filter { $0.isSharp }.count-$0.keySig.filter { $0.isFlat }.count < $1.keySig.filter { $0.isSharp }.count-$1.keySig.filter { $0.isFlat }.count
 		}
 	}
+	
+	class func newAcc3(in key: Key) -> Note? {
+		// get comparison key by comparing values
+		let prev = key.value > 0
+			? allMajorKeys.first(where:) { $0.value == key.value - 1 }!
+			: key.value < 0
+			? allMajorKeys.first(where:) { $0.value == key.value + 1 }!
+			: nil
+		
+		guard let prevKey = prev else { return nil }
+		return key.keySig.first(where:) { !prevKey.keySig.contains($0) } ?? nil
+	}
+		
+	
+}
+
+extension Music {
+	// Testing and trying
+	
+	class func sortedKeySig(for key: Key) -> [Note] {
+		var rawKeySig = key.keySig
+		var sortedKeySig = [Note]()
+		if key.value > 0 {	// sharp keys
+			while sortedKeySig.count > 1 {
+				if let otherKey = allMajorKeys.first(where: { $0.value == sortedKeySig.count - 1 }),
+					let nextAccidental = key.keySig.first(where: { !otherKey.keySig.contains($0) }) {
+					sortedKeySig.append(nextAccidental)
+					rawKeySig.remove(at: rawKeySig.index(of: nextAccidental)!)
+				}
+			}
+			//let prevKey = allMajorKeys.first(where:) { $0.value == key.value - 1 }!
+			
+		}
+		return sortedKeySig
+	}
+	
 	class func newAcc(in key: Key) -> Note? {
 		// get comparison key from circle of fifths
 		let keys = circleOfFifthsKeys
@@ -65,37 +107,7 @@ class Music {
 		guard let prevKey = prev else { return nil }
 		return key.keySig.first(where:) { !prevKey.keySig.contains($0) } ?? nil
 	}
-	
-	class func newAcc3(in key: Key) -> Note? {
-		// get comparison key by comparing values
-		let prev = key.value > 0
-			? allMajorKeys.first(where:) { $0.value == key.value - 1 }!
-			: key.value < 0
-			? allMajorKeys.first(where:) { $0.value == key.value + 1 }!
-			: nil
-		
-		guard let prevKey = prev else { return nil }
-		return key.keySig.first(where:) { !prevKey.keySig.contains($0) } ?? nil
-	}
-	
-	class func sortedKeySig(for key: Key) -> [Note] {
-		var rawKeySig = key.keySig
-		var sortedKeySig = [Note]()
-		if key.value > 0 {	// sharp keys
-			while sortedKeySig.count > 1 {
-				if let otherKey = allMajorKeys.first(where: { $0.value == sortedKeySig.count - 1 }),
-					let nextAccidental = key.keySig.first(where: { !otherKey.keySig.contains($0) }) {
-					sortedKeySig.append(nextAccidental)
-					rawKeySig.remove(at: rawKeySig.index(of: nextAccidental)!)
-				}
-			}
-			let prevKey = allMajorKeys.first(where:) { $0.value == key.value - 1 }!
-			
-		}
-		return sortedKeySig
-	}
 }
-
 
 
 
