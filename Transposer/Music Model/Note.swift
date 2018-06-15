@@ -10,11 +10,10 @@ import Foundation
 
 class Note: Equatable, CustomStringConvertible {
 	/* TO-DO:
-	// 1. make initializers failable (too much work resolving resulting optionals throughout the rest of the code, for now)
 	// 2. make name and num lazy so we don't have to compute each one every time a note is created (sometimes we don't need both)
 	*/
 	
-	var name: String!
+	var name: String
 	
 	func getNumFromName(_ name: String) -> Int? {
 		for (index, names) in Music.noteNames.enumerated() {
@@ -25,14 +24,11 @@ class Note: Equatable, CustomStringConvertible {
 		return nil
 	}
 	
-	var num: Int!
+	var num: Int
 	
-	func getNameFromNum(_ num: Int) -> String? {
+	func getNameFromNum(_ num: Int) -> String {
 		let adjNum = Note.getNumWithinOctave(num: num)
-		if adjNum < Music.noteNames.count {
-			return Music.noteNames[adjNum].first!
-		}
-		return nil
+		return Music.noteNames[adjNum].first!
 	}
 	
 	class func getNumWithinOctave(num: Int) -> Int {
@@ -43,14 +39,24 @@ class Note: Equatable, CustomStringConvertible {
 	}
 	
 	init? (_ name: String) {
-		guard let num = getNumFromName(name) else { return nil }
-		self.num = num
+		self.num = -1
+		for (index, names) in Music.noteNames.enumerated() {
+			if names.index(of: name) != nil {
+				self.num = index
+			}
+		}
+		if self.num == -1 {
+			return nil
+		} else {
 		self.name = name
+		}
 	}
 	
 	init (_ num: Int) {
 		self.num = num
-		self.name = getNameFromNum(num)
+		let adjNum = Note.getNumWithinOctave(num: num)
+		self.name = Music.noteNames[adjNum].first!
+//		self.name = getNameFromNum(num)
 	}
 	
 	static func == (_ ls: Note, _ rs: Note) -> Bool {
@@ -61,48 +67,53 @@ class Note: Equatable, CustomStringConvertible {
 	
 	lazy var isFlat = self.name.contains("b")
 	
-	lazy var description = "Note (name: \(self.name!), num: \(self.num!))"
+	lazy var description = "Note (name: \(self.name), num: \(self.num))"
 	
 	func transpose(_ steps: Int) -> Note {
 		var num = self.num + steps
 		num = Note.getNumWithinOctave(num: num)
 		return Note(num)
 	}
+}
 
-	func transpose(from sourceKey: Key, to destKey: Key) -> Note {
-		// note diatonic to source key, using degrees
-		if let degree = sourceKey.notes.index(of: self) {
-			return destKey[degree]
-		}
-		
-		// note not diatonic to source key, using intervals
-		let tonic = sourceKey[0]
-		let interval = abs(tonic.num - self.num)
-		let newNote = destKey[0].transpose(interval)
-		// this new note is initialized with the first possible name.
-		// if there's only one possible name anyway, we're done.
-		let possibleNames = Music.noteNames[newNote.num]
-		guard possibleNames.count > 1 else { return newNote }
-		
-		// otherwise, we need to check our musical spelling
+extension Note {
+	// complex transposing
+	
+	fileprivate func preferredSpelling(in destKey: Key, from possibleNames: [String]) -> Note {
 		let keyPos = Music.circleOfFifths.index(of: destKey)!
-		let noteDistances = possibleNames.map { (noteName) -> Int in
-			// this doesn't handle one of the possibleNames being a natural note! (see else clause below)
+		let notePreferences = possibleNames.map { (noteName) -> Int in
 			var distance = 0
 			if let notePos = Music.orderOfAccidentals.index(of: Note(noteName)!) {
 				distance = abs(keyPos - notePos)
+				return min(distance, notePos) // A note that occurs earlier in the circle of 5ths is probably preferable to a note closerby.
+				// TO-DO: When the notePreferences are equal because one is distance and one is notePos, prefer the one returning distance.
 			} else {
 				// TO-DO: note isn't an accidental. what do we do?
 			}
 			return distance
 		}
-		let closest = min(noteDistances[0], noteDistances[1])
-		let closestIndex = noteDistances.index(of: closest)!
+		let closest = min(notePreferences[0], notePreferences[1])
+		let closestIndex = notePreferences.index(of: closest)!
 		let closestNoteName = possibleNames[closestIndex]
 		
-		
-		
 		return Note(closestNoteName)!
-		
 	}
+	
+	func transpose(from sourceKey: Key, to destKey: Key) -> Note {
+		// note diatonic to source key, using degrees
+		if let degree = sourceKey.notes.index(of: self) { return destKey[degree] }
+		
+		// note not diatonic to source key, using intervals
+		let tonic = sourceKey[0]
+		let interval = abs(tonic.num - self.num)
+		let newNote = destKey[0].transpose(interval) // this new note is initialized with the first possible name.
+		
+		let possibleNames = Music.noteNames[newNote.num]
+		if possibleNames.count == 1 {
+			return newNote
+		} else {
+			return preferredSpelling(in: destKey, from: possibleNames)
+		}
+	}
+	
 }

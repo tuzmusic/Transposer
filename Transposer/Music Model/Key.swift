@@ -27,7 +27,7 @@ class Key: Equatable {
 		return notes[degree]
 	}
 	
-	lazy var value = notes.reduce(0) { $0 + (Music.accidentalSymbols[$1.name!.last!]?.rawValue ?? 0) }		
+	lazy var value = notes.reduce(0) { $0 + (Music.accidentalSymbols[$1.name.last!]?.rawValue ?? 0) }		
 	
 	init?(tonic: Note, pattern: ScalePattern) {
 		guard let notes = notesInScale(tonic, pattern) else { return nil }

@@ -11,6 +11,42 @@ import XCTest
 
 class TransposerTests: XCTestCase {
 	
+//	func testChordSymbols() {
+//		var result: Chord
+//		let cmaj = Chord(root: Note("C")!, quality: maj)
+//		result = Chord("Cmaj")!
+//		XCTAssertEqual(result, cmaj)
+//	}
+	
+	func testTranspositionSpellings() {
+		var result: Note
+		let cmaj = Key("C")!
+		let abmaj = Key("Ab")!
+		
+		// b7 degree
+		let bb = Note("Bb")!
+		result = bb.transpose(from: cmaj, to: abmaj)
+		XCTAssertEqual(result, Note("Gb")!)
+		
+		// #2 degree - F# in Fmajor
+		let cs = Note("C#")!
+		let fmaj = Key("F major")!
+		result = cs.transpose(from: cmaj, to: fmaj) // error is here
+		XCTAssertEqual(result, Note("F#")!)
+		
+		// Bb in D major? (b6 degree) -- equidistant! oh no!
+		let ab = Note("Ab")!
+		let dmaj = Key("D major")!
+		result = ab.transpose(from: cmaj, to: dmaj)
+		XCTAssertEqual(result, Note("Bb")!)
+		
+		// #4 degree - where one note is a natural
+		let fs = Note("F#")!
+		let fsmaj = Key("F# major")!
+		result = fs.transpose(from: cmaj, to: fsmaj)
+		XCTAssertEqual(result, Note("B#")!)
+	}
+
 	func testCircleOfFifths() {
 		let names = "Cb Gb Db Ab Eb Bb F C G D A E B F# C#"
 		XCTAssertEqual(names, Music.circleOfFifthsNames)
@@ -18,7 +54,7 @@ class TransposerTests: XCTestCase {
 	
    func testOrderOfAccidentals() {
 		let accsInOrder = Music.circleOfFifths
-			.map { Music.newAcc3(in: $0)?.name! ?? "" }
+			.map { Music.newAcc3(in: $0)?.name ?? "" }
 			.joined(separator: " ")
 		XCTAssertEqual(accsInOrder, TestConstants.orderOfAccidentals)
 	}
@@ -41,6 +77,11 @@ class TransposerTests: XCTestCase {
 	func testFailableNotes() {
 		let badNote = Note("X")
 		XCTAssert(badNote==nil)
+	}
+	
+	func testFailableKey() {
+		let badKey = Key("D#")
+		XCTAssertEqual(badKey, nil)
 	}
 	
 	func testKeySubscript() {
@@ -81,42 +122,9 @@ class TransposerTests: XCTestCase {
 		result = fs.transpose(from: cmaj, to: abmaj)
 		XCTAssertEqual(result, Note("D")!)
 		
-		let fsmaj = Key("F# major")!
-		result = fs.transpose(from: cmaj, to: fsmaj)
-		XCTAssertEqual(result, Note("B#")!)
-		
 		let csmaj = Key("C# major")!
 		result = fs.transpose(from: cmaj, to: csmaj)
 		XCTAssertEqual(result, Note("G")!)
-	}
-	
-	func testTranspositionSpellings() {
-		var result: Note
-		let cmaj = Key("C")!
-		let abmaj = Key("Ab")!
-		
-		// b7 degree
-		let bb = Note("Bb")!
-		result = bb.transpose(from: cmaj, to: abmaj)
-		XCTAssertEqual(result, Note("Gb")!)
-		
-		// #2 degree - F# in Fmajor
-		let cs = Note("C#")!
-		let fmaj = Key("F major")!
-		result = cs.transpose(from: cmaj, to: fmaj) // error is here
-		XCTAssertEqual(result, Note("F#")!)
-		
-		// Bb in D major? (b6 degree) -- equidistant! oh no!
-		let ab = Note("Ab")!
-		let dmaj = Key("D major")!
-		result = ab.transpose(from: cmaj, to: dmaj)
-		XCTAssertEqual(result, Note("Bb")!)
-
-		// #4 degree
-		let fs = Note("F#")!
-		let fsmaj = Key("F# major")!
-		result = fs.transpose(from: cmaj, to: fsmaj)
-		XCTAssertEqual(result, Note("B#")!)
 	}
 	
 }
