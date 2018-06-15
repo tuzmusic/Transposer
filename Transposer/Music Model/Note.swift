@@ -14,22 +14,7 @@ class Note: Equatable, CustomStringConvertible {
 	*/
 	
 	var name: String
-	
-	func getNumFromName(_ name: String) -> Int? {
-		for (index, names) in Music.noteNames.enumerated() {
-			if names.index(of: name) != nil {
-				return index
-			}
-		}
-		return nil
-	}
-	
 	var num: Int
-	
-	func getNameFromNum(_ num: Int) -> String {
-		let adjNum = Note.getNumWithinOctave(num: num)
-		return Music.noteNames[adjNum].first!
-	}
 	
 	class func getNumWithinOctave(num: Int) -> Int {
 		var adjNum = num
@@ -56,7 +41,6 @@ class Note: Equatable, CustomStringConvertible {
 		self.num = num
 		let adjNum = Note.getNumWithinOctave(num: num)
 		self.name = Music.noteNames[adjNum].first!
-//		self.name = getNameFromNum(num)
 	}
 	
 	static func == (_ ls: Note, _ rs: Note) -> Bool {
