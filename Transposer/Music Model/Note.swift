@@ -89,14 +89,24 @@ extension Note {
 		
 		// note not diatonic to source key, using intervals
 		let tonic = sourceKey[0]
-		let interval = abs(tonic.num - self.num)
+		
+		// SHIT! All tests passed because we were in C.
+		let interval = Note.getNumWithinOctave(num: self.num - tonic.num)
 		let newNote = destKey[0].transpose(interval) // this new note is initialized with the first possible name.
 		
 		let possibleNames = Music.noteNames[newNote.num]
 		if possibleNames.count == 1 {
 			return newNote
 		} else {
-			return preferredSpelling(in: destKey, from: possibleNames)
+			// lots of unwrapped optionals here. as long as we're in the testing phase they should just serve to uncover bugs
+			let noteNameBase = self.name.first!
+			let degree = sourceKey.notes.index(of: sourceKey.notes.first(where:) { $0.name.first! == noteNameBase }!)!
+			let destBaseNote = destKey[degree]
+			if let destBaseLetter = Music.noteNames[newNote.num].first(where: { $0.first! == destBaseNote.name.first! }) {
+				return Note(destBaseLetter)!
+			} else {
+				return newNote
+			}
 		}
 	}
 	

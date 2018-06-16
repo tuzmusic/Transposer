@@ -12,11 +12,35 @@ import XCTest
 class TransposerTests: XCTestCase {
 	
 //	func testChordSymbols() {
-//		var result: Chord
-//		let cmaj = Chord(root: Note("C")!, quality: maj)
-//		result = Chord("Cmaj")!
-//		XCTAssertEqual(result, cmaj)
+//		var symbol: String
+//		let c = Note("C")!
+//		var cmaj = Chord(root: c, base: c, quality: Chord.maj, extensions: nil)
+//		symbol = "Cmaj"
+//		XCTAssertEqual(symbol, cmaj.symbol)
+//
+//		// test init with root and quality only
+//		cmaj = Chord(root: c, quality: Chord.maj)
+//		XCTAssertEqual(symbol, cmaj.symbol)
+//
+//		// test symbol init
+//		cmaj = Chord("Cmaj")
+//		XCTAssertEqual(symbol, cmaj.symbol)
 //	}
+	
+	func testDiatonicTransposition() {
+		var result: Note
+		let bmaj = Key("B")!
+		let ebmaj = Key("Eb")!
+		
+		result = Note("D#")!.transpose(from: bmaj, to: ebmaj)
+		XCTAssertEqual(result.name, "G")
+		
+		result = Note("A#")!.transpose(from: bmaj, to: ebmaj)
+		XCTAssertEqual(result.name, "D")
+		
+		result = Note("E")!.transpose(from: bmaj, to: ebmaj)
+		XCTAssertEqual(result.name, "Ab")
+	}
 	
 	func testTranspositionSpellings() {
 		var result: Note
@@ -28,11 +52,16 @@ class TransposerTests: XCTestCase {
 		result = bb.transpose(from: cmaj, to: abmaj)
 		XCTAssertEqual(result, Note("Gb")!)
 		
-		// #2 degree - F# in Fmajor
+		// #1 degree - F# in Fmajor
 		let cs = Note("C#")!
 		let fmaj = Key("F major")!
-		result = cs.transpose(from: cmaj, to: fmaj) // error is here
+		result = cs.transpose(from: cmaj, to: fmaj)
 		XCTAssertEqual(result, Note("F#")!)
+		
+		// b2 degree - Db from C to F
+		let db = Note("Db")!
+		result = db.transpose(from: cmaj, to: fmaj)
+		XCTAssertEqual(result, Note("Gb")!)
 		
 		// Bb in D major? (b6 degree) -- equidistant! oh no!
 		let ab = Note("Ab")!
@@ -47,6 +76,22 @@ class TransposerTests: XCTestCase {
 		XCTAssertEqual(result, Note("B#")!)
 	}
 
+	func testTransposeSpellingFromComplexKey() {
+		var result: Note
+		let bmaj = Key("B")!
+		let ebmaj = Key("Eb")!
+		
+		let eb = Note("Eb")! // b4
+		result = eb.transpose(from: bmaj, to: ebmaj)
+		XCTAssertEqual(result.name, "G") // should be Abb, but should default to G
+		
+		result = Note("A")!.transpose(from: bmaj, to: ebmaj)
+		XCTAssertEqual(result.name, "Db")
+		
+		result = Note("C")!.transpose(from: bmaj, to: ebmaj)
+		XCTAssertEqual(result.name, "Fb")
+	}
+	
 	func testCircleOfFifths() {
 		let names = "Cb Gb Db Ab Eb Bb F C G D A E B F# C#"
 		XCTAssertEqual(names, Music.circleOfFifthsNames)
