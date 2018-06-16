@@ -25,7 +25,7 @@ class Chord {
 	
 	var root: Note
 	var base: Note?
-	var quality: ChordPattern
+	var quality: ChordPattern?
 	var extensions: String?
 	
 	lazy var symbol: String = {
@@ -33,7 +33,7 @@ class Chord {
 		if let base = base, base != root {
 			name += "/\(base.name)"
 		}
-		name += quality.sym
+		name += quality?.sym ?? ""
 		name += extensions ?? ""
 		return name
 	}()
@@ -45,5 +45,39 @@ class Chord {
 		self.extensions = extensions
 	}
 	
+	init(root: Note, quality: ChordPattern) {
+		self.root = root
+		self.base = root
+		self.quality = quality
+		self.extensions = nil
+	}
+	
+	init?(_ string: String) {
+		var symbol = string
+		
+		// assemble root
+		var rootName = String(symbol.removeFirst())
+		if let nextChar = symbol.first, Music.accidentalSymbols[nextChar] != nil {
+			rootName += String(nextChar)
+			symbol.removeFirst()
+		}
+		guard let root = Note(rootName) else { return nil }
+		
+		self.root = root
+		if symbol.isEmpty  {
+			self.base = root
+			return
+		}
+		let components = symbol.split(separator: "/")
+		self.extensions = String(components[0])
+		if components.count > 1 {
+			let afterSlash = String(components[1])
+			if let base = Note(afterSlash) {
+				self.base = base
+			}
+		}
+		// find altered bass
+		// do something with the rest of the text (quality, extensions, etc; things that don't transpose)
+	}
 	
 }
