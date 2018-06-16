@@ -30,11 +30,11 @@ class Chord {
 	
 	lazy var symbol: String = {
 		var name = root.name
+		name += quality?.sym ?? ""
+		name += extensions ?? ""
 		if let base = base, base != root {
 			name += "/\(base.name)"
 		}
-		name += quality?.sym ?? ""
-		name += extensions ?? ""
 		return name
 	}()
 	
@@ -53,6 +53,7 @@ class Chord {
 	}
 	
 	init?(_ string: String) {
+		guard !string.isEmpty else { return nil }
 		var symbol = string
 		
 		// assemble root
@@ -62,22 +63,20 @@ class Chord {
 			symbol.removeFirst()
 		}
 		guard let root = Note(rootName) else { return nil }
-		
 		self.root = root
+		
 		if symbol.isEmpty  {
 			self.base = root
 			return
 		}
-		let components = symbol.split(separator: "/")
-		self.extensions = String(components[0])
+		var components = symbol.split(separator: "/")
 		if components.count > 1 {
-			let afterSlash = String(components[1])
-			if let base = Note(afterSlash) {
+			if let base = Note(String(components.last!)) {
 				self.base = base
+				_ = components.popLast()
 			}
 		}
-		// find altered bass
-		// do something with the rest of the text (quality, extensions, etc; things that don't transpose)
+		self.extensions = components.joined(separator: "/")
 	}
 	
 }

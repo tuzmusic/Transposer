@@ -22,7 +22,7 @@ class TransposerTests: XCTestCase {
 		cmaj = Chord(root: c, quality: Chord.maj)
 		XCTAssertEqual(symbol, cmaj.symbol)
 
-		// test symbol init
+		// test symbol initializers
 		
 		let simpleChord = Chord("Eb")
 		XCTAssertEqual(simpleChord?.root.name, "Eb")
@@ -31,10 +31,18 @@ class TransposerTests: XCTestCase {
 		let complexChord = Chord("Cmaj7/E")
 		XCTAssertEqual(complexChord?.root.name, "C")
 		XCTAssertEqual(complexChord?.base?.name, "E")
-		
+		XCTAssertEqual(complexChord?.symbol, "Cmaj7/E")
+
 		let complexChordWithAccs = Chord("C#maj7/Eb")
 		XCTAssertEqual(complexChordWithAccs?.root.name, "C#")
 		XCTAssertEqual(complexChordWithAccs?.base?.name, "Eb")
+		XCTAssertEqual(complexChordWithAccs?.symbol, "C#maj7/Eb")
+		
+		let chord69 = Chord("D6/9/G")
+		XCTAssertEqual(chord69?.root.name, "D")
+		XCTAssertEqual(chord69?.base?.name, "G")
+		XCTAssertEqual(chord69?.extensions, "6/9")
+		XCTAssertEqual(chord69?.symbol, "D6/9/G")
 	}
 	
 	func testDiatonicTransposition() {
