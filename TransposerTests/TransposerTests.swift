@@ -14,10 +14,25 @@ class TransposerTests: XCTestCase {
 	func testChordTransposition() {
 		let cmaj = Key("C")!
 		let gmaj = Key("G")!
-		let bbmaj = Key("Bb")!
+		//let bbmaj = Key("Bb")!
 		let simpleChord = Chord("C")!
 		
-		XCTAssertEqual(simpleChord.transpose(from: gmaj, to: cmaj).symbol, "F")
+		XCTAssertEqual(simpleChord.transpose(from: gmaj, to: cmaj).symbol, "F") // IV
+		XCTAssertEqual(simpleChord.transpose(from: cmaj, to: gmaj).symbol, "G") // I
+
+		var result: Chord
+		let complexChord = Chord("Cmaj7/E")!
+		result = complexChord.transpose(from: cmaj, to: gmaj) // I
+		XCTAssertEqual(result.symbol, "Gmaj7/B")
+		result = complexChord.transpose(from: gmaj, to: cmaj) // IV
+		XCTAssertEqual(result.symbol, "Fmaj7/A")
+		
+		let complexChordWithAccs = Chord("C#maj7/Eb")!
+		result = complexChordWithAccs.transpose(from: cmaj, to: gmaj)
+		XCTAssertEqual(result.symbol, "G#maj7/Bb")
+		result = complexChordWithAccs.transpose(from: gmaj, to: cmaj)
+		XCTAssertEqual(result.symbol, "F#maj7/Ab")
+		
 		
 	}
 	

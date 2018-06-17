@@ -8,47 +8,60 @@
 
 import Foundation
 
-extension Music {
-	struct ChordPattern {
-		var name: String
-		var pattern: [Int]
-		var sym: String
-		var shortSym: String
-	}
-}
-
-typealias ChordPattern = Music.ChordPattern
-
-class Chord {
-	
-	static let maj = ChordPattern(name: "major", pattern: [0,2,4], sym: "maj", shortSym: "M")
+class Chord: CustomStringConvertible {
 	
 	var root: Note
 	var base: Note?
-	var quality: ChordPattern?
 	var extensions: String?
 	
-	lazy var symbol: String = {
+	var symbol: String {
+		get {
+			var name = root.name
+			name += extensions ?? ""
+			if let base = base, base != root {
+				name += "/\(base.name)"
+			}
+			return name
+		} set {
+		}
+	}
+	
+	lazy var description = self.symbol
+	
+	static func == (_ ls: Chord, _ rs: Chord) -> Bool {
+		if ls.root != rs.root { return false }
+		if ls.extensions != rs.extensions { return false }
+		if let leftBase = ls.base {
+			if let rightBase = rs.base {
+				if leftBase != rightBase { return false } // if they both have base but they're different
+			} else {
+				if leftBase != ls.root { return false } // if only left has base and it is indeed altered
+				else if let rightBase = rs.base, rightBase != rs.root { // if only right has base and it is indeed altered
+					return false
+				}
+			}
+		}
+		return true
+	}
+	
+	func sym() -> String {
 		var name = root.name
-		name += quality?.sym ?? ""
 		name += extensions ?? ""
 		if let base = base, base != root {
 			name += "/\(base.name)"
 		}
 		return name
-	}()
+	}
 	
-	init(root: Note, base: Note, quality: ChordPattern, extensions: String?) {
+	init(root: Note, base: Note, extensions: String?) {
 		self.root = root
 		self.base = base
-		self.quality = quality
 		self.extensions = extensions
 	}
 	
-	init(root: Note, quality: ChordPattern) {
+	init(root: Note) {
 		self.root = root
 		self.base = root
-		self.quality = quality
 		self.extensions = nil
 	}
 	
@@ -85,18 +98,16 @@ extension Chord {
 	// transposition
 	
 	func transpose(from sourceKey: Key, to destKey: Key) -> Chord {
-		var newChord = self
+		let newChord = self
 		newChord.root = self.root.transpose(from: sourceKey, to: destKey)
 		if let base = self.base {
 			newChord.base = base.transpose(from: sourceKey, to: destKey)
 		}
-		if let quality = self.quality {
-			newChord.quality = quality
-		}
 		if let description = self.extensions {
 			newChord.extensions = description
 		}
+		newChord.symbol = newChord.sym()
 		return newChord
 	}
-		
+	
 }
