@@ -9,6 +9,12 @@
 import XCTest
 @testable import Transposer
 
+extension XCTestCase {
+	func Xtest<T: Equatable>(_ exp1: T, _ exp2: T) {
+		XCTAssertEqual(exp1, exp2, "\(exp1) ≠ \(exp2)")
+	}
+}
+
 class TransposerTests: XCTestCase {
 	
 	func testChordTransposition() {
@@ -18,7 +24,7 @@ class TransposerTests: XCTestCase {
 		let simpleChord = Chord("C")!
 		
 		XCTAssertEqual(simpleChord.transpose(from: gmaj, to: cmaj).symbol, "F") // IV
-		XCTAssertEqual(simpleChord.transpose(from: cmaj, to: gmaj).symbol, "G") // I
+		Xtest(simpleChord.transpose(from: cmaj, to: gmaj).symbol, "G") // I
 
 		var result: Chord
 		let complexChord = Chord("Cmaj7/E")!
@@ -39,12 +45,12 @@ class TransposerTests: XCTestCase {
 	func testChordSymbols() {
 		var symbol: String
 		let c = Note("C")!
-		var cmaj = Chord(root: c, base: c, quality: Chord.maj, extensions: nil)
+		var cmaj = Chord(root: c, base: c, extensions: nil)
 		symbol = "Cmaj"
 		XCTAssertEqual(symbol, cmaj.symbol)
 
 		// test init with root and quality only
-		cmaj = Chord(root: c, quality: Chord.maj)
+		cmaj = Chord(root: c)
 		XCTAssertEqual(symbol, cmaj.symbol)
 
 		// test symbol initializers

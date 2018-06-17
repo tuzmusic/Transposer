@@ -22,8 +22,8 @@ class Chord: CustomStringConvertible {
 				name += "/\(base.name)"
 			}
 			return name
-		} set {
 		}
+		set { }
 	}
 	
 	lazy var description = self.symbol
@@ -98,15 +98,14 @@ extension Chord {
 	// transposition
 	
 	func transpose(from sourceKey: Key, to destKey: Key) -> Chord {
-		let newChord = self
-		newChord.root = self.root.transpose(from: sourceKey, to: destKey)
+		let newRoot = self.root.transpose(from: sourceKey, to: destKey)
+		let newChord = Chord(root: newRoot)
 		if let base = self.base {
 			newChord.base = base.transpose(from: sourceKey, to: destKey)
 		}
 		if let description = self.extensions {
 			newChord.extensions = description
 		}
-		newChord.symbol = newChord.sym()
 		return newChord
 	}
 	
