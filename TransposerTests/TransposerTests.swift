@@ -11,6 +11,16 @@ import XCTest
 
 class TransposerTests: XCTestCase {
 	
+	func testChordTransposition() {
+		let cmaj = Key("C")!
+		let gmaj = Key("G")!
+		let bbmaj = Key("Bb")!
+		let simpleChord = Chord("C")!
+		
+		XCTAssertEqual(simpleChord.transpose(from: gmaj, to: cmaj).symbol, "F")
+		
+	}
+	
 	func testChordSymbols() {
 		var symbol: String
 		let c = Note("C")!
@@ -189,6 +199,5 @@ class TransposerTests: XCTestCase {
 		result = fs.transpose(from: cmaj, to: csmaj)
 		XCTAssertEqual(result, Note("G")!)
 	}
-	
-}
+	}
 

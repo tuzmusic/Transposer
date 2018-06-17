@@ -80,3 +80,23 @@ class Chord {
 	}
 	
 }
+
+extension Chord {
+	// transposition
+	
+	func transpose(from sourceKey: Key, to destKey: Key) -> Chord {
+		var newChord = self
+		newChord.root = self.root.transpose(from: sourceKey, to: destKey)
+		if let base = self.base {
+			newChord.base = base.transpose(from: sourceKey, to: destKey)
+		}
+		if let quality = self.quality {
+			newChord.quality = quality
+		}
+		if let description = self.extensions {
+			newChord.extensions = description
+		}
+		return newChord
+	}
+		
+}
