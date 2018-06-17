@@ -17,6 +17,20 @@ extension XCTestCase {
 
 class TransposerTests: XCTestCase {
 	
+	func testChordEquality() {
+		let c = Note("C")!
+		let chord1 = Chord("C")
+		let chord2 = Chord(root: c)
+		Xtest(chord1, chord2)
+		let chord3 = Chord(root: c, base: c, extensions: nil)
+		Xtest(chord2, chord3)
+		
+		let diffChord1 = Chord("Cm")
+		XCTAssertFalse(diffChord1==chord3)
+		let diffChord2 = Chord(root: Note("F")!)
+		XCTAssertFalse(diffChord2==chord3)
+	}
+	
 	func testChordTransposition() {
 		let cmaj = Key("C")!
 		let gmaj = Key("G")!
@@ -46,7 +60,7 @@ class TransposerTests: XCTestCase {
 		var symbol: String
 		let c = Note("C")!
 		var cmaj = Chord(root: c, base: c, extensions: nil)
-		symbol = "Cmaj"
+		symbol = "C"
 		XCTAssertEqual(symbol, cmaj.symbol)
 
 		// test init with root and quality only

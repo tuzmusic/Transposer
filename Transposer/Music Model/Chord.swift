@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Chord: CustomStringConvertible {
+class Chord: Equatable, CustomStringConvertible {
 	
 	var root: Note
 	var base: Note?
