@@ -16,7 +16,7 @@ extension XCTestCase {
 }
 
 class TransposerTests: XCTestCase {
-	
+		
 	func testChordEquality() {
 		let c = Note("C")!
 		let chord1 = Chord("C")

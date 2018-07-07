@@ -13,6 +13,8 @@ class TransposeTableViewController: UITableViewController {
 	var sourceKey = Key("C")!
 	var destKey = Key("G")!
 	
+	var song: Song!
+	
 	@IBOutlet weak var sourceTextView: UITextView!
 	@IBOutlet weak var destTextView: UITextView!
 	@IBAction func transposeTapped() {

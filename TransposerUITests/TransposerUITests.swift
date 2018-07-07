@@ -33,13 +33,16 @@ class TransposerUITests: XCTestCase {
 	}
 	
 	func testTransposeButton() {
-		
+
 		let tablesQuery = app.tables
 		let transposeButton = tablesQuery/*@START_MENU_TOKEN@*/.buttons["Transpose"]/*[[".cells.buttons[\"Transpose\"]",".buttons[\"Transpose\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
-		transposeButton.tap()
-		
-		let expected = "G C D7 | F G | Bm/D"
+		//let sourceView = XCUIApplication().tables.children(matching: .cell).element(boundBy: 0).children(matching: .textView).element
 		let destView = XCUIApplication().tables.children(matching: .cell).element(boundBy: 2).children(matching: .textView).element
+
+		//let input = "C F G7 | Bb C | Em/G"
+		let expected = "G C D7 | F G | Bm/D"	
+		
+		transposeButton.tap()
 		
 		XCTAssertEqual(expected, destView.value as? String)
 		

@@ -21,7 +21,7 @@ class StringTranspositionTests: XCTestCase {
 		
 		let c_to_g = "G C D7 | F G | Bm/D"
 		
-//		var result = simpleTestString.transpose(from: cmaj, to: gmaj)
+		let result = simpleTestString.transpose(fromString:"C", toString:"G")
 		
 		Xtest(result, c_to_g)
 		
