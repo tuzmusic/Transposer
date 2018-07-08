@@ -22,6 +22,8 @@
 		765ED62A20D43764007ACCA5 /* Chord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 765ED62820D43764007ACCA5 /* Chord.swift */; };
 		765ED62B20D43764007ACCA5 /* Chord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 765ED62820D43764007ACCA5 /* Chord.swift */; };
 		767820F520D6DA3E00EB678B /* TransposeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767820F420D6DA3E00EB678B /* TransposeTableViewController.swift */; };
+		76B861F020F139E3004EED26 /* Song.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B861EF20F139E3004EED26 /* Song.swift */; };
+		76B861F220F13A31004EED26 /* MusicText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B861F120F13A31004EED26 /* MusicText.swift */; };
 		76B8D23620D1CE250074E71E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B8D23520D1CE250074E71E /* AppDelegate.swift */; };
 		76B8D23820D1CE250074E71E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B8D23720D1CE250074E71E /* ViewController.swift */; };
 		76B8D23B20D1CE250074E71E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 76B8D23920D1CE250074E71E /* Main.storyboard */; };
@@ -30,7 +32,7 @@
 		76B8D24B20D1CE260074E71E /* TransposerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B8D24A20D1CE260074E71E /* TransposerTests.swift */; };
 		76B8D25620D1CE260074E71E /* TransposerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B8D25520D1CE260074E71E /* TransposerUITests.swift */; };
 		76BB9A6D20D6D2E400E53CE8 /* StringTranspositionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76BB9A6C20D6D2E400E53CE8 /* StringTranspositionTests.swift */; };
-		76BB9A6F20D6D41E00E53CE8 /* MusicText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76BB9A6E20D6D41E00E53CE8 /* MusicText.swift */; };
+		76BB9A6F20D6D41E00E53CE8 /* String Transposition Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76BB9A6E20D6D41E00E53CE8 /* String Transposition Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +60,8 @@
 		765ED62620D1D165007ACCA5 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		765ED62820D43764007ACCA5 /* Chord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chord.swift; sourceTree = "<group>"; };
 		767820F420D6DA3E00EB678B /* TransposeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransposeTableViewController.swift; sourceTree = "<group>"; };
+		76B861EF20F139E3004EED26 /* Song.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Song.swift; sourceTree = "<group>"; };
+		76B861F120F13A31004EED26 /* MusicText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicText.swift; sourceTree = "<group>"; };
 		76B8D23220D1CE250074E71E /* Transposer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Transposer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		76B8D23520D1CE250074E71E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		76B8D23720D1CE250074E71E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -72,7 +76,7 @@
 		76B8D25520D1CE260074E71E /* TransposerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransposerUITests.swift; sourceTree = "<group>"; };
 		76B8D25720D1CE260074E71E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		76BB9A6C20D6D2E400E53CE8 /* StringTranspositionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringTranspositionTests.swift; sourceTree = "<group>"; };
-		76BB9A6E20D6D41E00E53CE8 /* MusicText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicText.swift; sourceTree = "<group>"; };
+		76BB9A6E20D6D41E00E53CE8 /* String Transposition Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String Transposition Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,10 +120,12 @@
 			isa = PBXGroup;
 			children = (
 				765ED5D020D1CFB7007ACCA5 /* Music.swift */,
+				76B861F120F13A31004EED26 /* MusicText.swift */,
 				765ED5D120D1CFB7007ACCA5 /* Note.swift */,
 				765ED5D220D1CFB7007ACCA5 /* Key.swift */,
 				765ED62820D43764007ACCA5 /* Chord.swift */,
-				76BB9A6E20D6D41E00E53CE8 /* MusicText.swift */,
+				76BB9A6E20D6D41E00E53CE8 /* String Transposition Extensions.swift */,
+				76B861EF20F139E3004EED26 /* Song.swift */,
 			);
 			path = "Music Model";
 			sourceTree = "<group>";
@@ -309,14 +315,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				767820F520D6DA3E00EB678B /* TransposeTableViewController.swift in Sources */,
-				76BB9A6F20D6D41E00E53CE8 /* MusicText.swift in Sources */,
+				76BB9A6F20D6D41E00E53CE8 /* String Transposition Extensions.swift in Sources */,
 				76B8D23820D1CE250074E71E /* ViewController.swift in Sources */,
 				765ED5DD20D1CFB7007ACCA5 /* Test and Old Stuff.swift in Sources */,
+				76B861F020F139E3004EED26 /* Song.swift in Sources */,
 				765ED5DA20D1CFB7007ACCA5 /* Key.swift in Sources */,
 				76B8D23620D1CE250074E71E /* AppDelegate.swift in Sources */,
 				765ED5D420D1CFB7007ACCA5 /* Music.swift in Sources */,
 				765ED5D720D1CFB7007ACCA5 /* Note.swift in Sources */,
 				765ED62920D43764007ACCA5 /* Chord.swift in Sources */,
+				76B861F220F13A31004EED26 /* MusicText.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
