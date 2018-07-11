@@ -56,7 +56,6 @@ struct MusicText {
 	
 	static func evaluateBothSymbols(in string: String) -> MusicText.IsMusic? {
 		// if it contains both of these symbols, but isn't wrapped in them (which would cancel out their effect here), that effects its score
-		// note: heartStr has any leading or trailing
 		for textType in MusicText.containsBothScores {
 			for string in textType.strings {
 				if string.contains(string.first!) && string.contains(string.last!)
