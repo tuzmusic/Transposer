@@ -11,7 +11,17 @@ import Foundation
 typealias MusicTextComponents = String
 typealias MusicLine = [MusicTextComponents]
 
-class Song {
+class Song: Equatable {
+	
+	init() {}
+	init(_ text: String) {
+		self.text = text
+		self.lines = text.split(separator: "\n").map {String($0)}
+	}
+	
+	static func == (lh: Song, rh: Song) -> Bool {
+		return lh.text == rh.text
+	}
 	
 	var lines = MusicLine()
 	var text = String() {
@@ -20,7 +30,8 @@ class Song {
 		}
 	}
 	
-	func transpose(from sourceKey: Key, to destKey: Key) -> String {
+	func transposed(from sourceKey: Key, to destKey: Key) -> Song {
+		var newSong = Song()
 		var newText = ""
 		for line in self.lines {
 			if line.isMusicLine {
@@ -29,7 +40,12 @@ class Song {
 				newText.append(line + "\n")
 			}
 		}
-		return newText
+		return Song(newText)
+	}
+	
+	func transposed(fromString sourceKey: String, toString destKey: String) -> Song? {
+		guard let source = Key(sourceKey), let dest = Key(destKey) else { return nil }
+		return self.transposed(from: source, to: dest)
 	}
 	
 }

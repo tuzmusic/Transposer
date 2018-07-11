@@ -21,6 +21,7 @@
 		765ED62920D43764007ACCA5 /* Chord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 765ED62820D43764007ACCA5 /* Chord.swift */; };
 		765ED62A20D43764007ACCA5 /* Chord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 765ED62820D43764007ACCA5 /* Chord.swift */; };
 		765ED62B20D43764007ACCA5 /* Chord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 765ED62820D43764007ACCA5 /* Chord.swift */; };
+		766BBA6B20F29E27001566B1 /* LargeStringTranspoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 766BBA6A20F29E27001566B1 /* LargeStringTranspoTests.swift */; };
 		767820F520D6DA3E00EB678B /* TransposeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767820F420D6DA3E00EB678B /* TransposeTableViewController.swift */; };
 		76B861F020F139E3004EED26 /* Song.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B861EF20F139E3004EED26 /* Song.swift */; };
 		76B861F220F13A31004EED26 /* MusicText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B861F120F13A31004EED26 /* MusicText.swift */; };
@@ -59,6 +60,7 @@
 		765ED5D320D1CFB7007ACCA5 /* Test and Old Stuff.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Test and Old Stuff.swift"; sourceTree = "<group>"; };
 		765ED62620D1D165007ACCA5 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		765ED62820D43764007ACCA5 /* Chord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chord.swift; sourceTree = "<group>"; };
+		766BBA6A20F29E27001566B1 /* LargeStringTranspoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LargeStringTranspoTests.swift; sourceTree = "<group>"; };
 		767820F420D6DA3E00EB678B /* TransposeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransposeTableViewController.swift; sourceTree = "<group>"; };
 		76B861EF20F139E3004EED26 /* Song.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Song.swift; sourceTree = "<group>"; };
 		76B861F120F13A31004EED26 /* MusicText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicText.swift; sourceTree = "<group>"; };
@@ -168,6 +170,7 @@
 			children = (
 				76B8D24A20D1CE260074E71E /* TransposerTests.swift */,
 				76BB9A6C20D6D2E400E53CE8 /* StringTranspositionTests.swift */,
+				766BBA6A20F29E27001566B1 /* LargeStringTranspoTests.swift */,
 				76B8D24C20D1CE260074E71E /* Info.plist */,
 			);
 			path = TransposerTests;
@@ -333,6 +336,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				76BB9A6D20D6D2E400E53CE8 /* StringTranspositionTests.swift in Sources */,
+				766BBA6B20F29E27001566B1 /* LargeStringTranspoTests.swift in Sources */,
 				76B8D24B20D1CE260074E71E /* TransposerTests.swift in Sources */,
 				765ED62A20D43764007ACCA5 /* Chord.swift in Sources */,
 				765ED5DB20D1CFB7007ACCA5 /* Key.swift in Sources */,
