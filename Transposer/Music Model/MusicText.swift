@@ -73,23 +73,16 @@ struct MusicText {
 extension String {
 	var isMusic: MusicText.IsMusic {
 		var heartStr = self
-		
 		removeLeadingOrTrailingParens(from: &heartStr)
 		if let score = MusicText.evaluateComponentSymbols(in: heartStr) { return score }
-
-		// if it's not a chord at all, it's definitely not music
 		if Chord(heartStr) == nil { return .defNot }
-				
-		// So, it might be a chord. work with the original string and see how likely it is to actually be music
 		if let score = MusicText.evaluateContainsSymbols(in: self) { return score }
 		if let score = MusicText.evaluateBothSymbols(in: self) { return score }
-		
-		// if it doesn't contain any of these symbols, we don't know anything more about whether it's music.
+
 		return .maybe
 	}
 	
 	func removeLeadingOrTrailingParens(from string: inout String) {
-		var string = string
 		// remove any leading and/or trailing parens
 		if string.count > 1 {
 			for textType in MusicText.containsBothScores {
