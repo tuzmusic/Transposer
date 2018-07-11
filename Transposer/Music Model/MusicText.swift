@@ -38,15 +38,15 @@ struct MusicText {
 	
 	static func evaluateComponentSymbols(in string: String) -> MusicText.IsMusic? {
 		// if this is only a symbol, that might tell us something
-		for textType in MusicText.componentScores {
-			if textType.strings.contains(string) { return textType.isPart }
-		}
+		return MusicText.componentScores.first(where:) {$0.strings.contains(string)}?.isPart
 		return nil
 	}
 	
 	static func evaluateContainsSymbols(in string: String) -> MusicText.IsMusic? {
 		// if it contains one of these symbols, that effects its likeliness to be music
 		for textType in MusicText.containsScores {
+			// Refactoring note:
+			// In "return textType.first(where:){string.contains(XXXX)}?.isPart", XXXX would have to be "one of the elements in the array"
 			for symbol in textType.strings {
 				if string.contains(symbol) { return textType.isPart }
 			}
@@ -68,6 +68,11 @@ struct MusicText {
 		return nil
 	}
 	
+	static func evaluateFormTitles(in string: String) {
+		// find any form titles
+		// separate them? is that necessary? probably not? just evaluate the "word" which will include the colon
+		// note: anything that ends in a colon is probNot/defNot???
+	}
 }
 
 extension String {
@@ -76,6 +81,7 @@ extension String {
 		removeLeadingOrTrailingParens(from: &heartStr)
 		if let score = MusicText.evaluateComponentSymbols(in: heartStr) { return score }
 		if Chord(heartStr) == nil { return .defNot }
+		
 		if let score = MusicText.evaluateContainsSymbols(in: self) { return score }
 		if let score = MusicText.evaluateBothSymbols(in: self) { return score }
 
