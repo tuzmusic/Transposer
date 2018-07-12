@@ -28,9 +28,18 @@ Because you know I'm all about that bass.
 	lazy var songInG = songInC.transposed(fromString: "C", toString: "G")!
 	let transposedSong = Song(Strings.transposedString)
 	
+	func testLine2() { // All the punctuation in line two should mess us up.
+		let line2Components = songInC[1].components(separatedBy: " ")
+		XCTAssertEqual(line2Components.map{$0.looksLikeMusic}, [false, true, true, true])
+		XCTAssertEqual(songInG[1], transposedSong[1])
+	}
+	
 	func testLines() {
 		XCTAssertEqual(songInC[0].isMusicLine_byCount, true)
+		XCTAssertEqual(songInC[1].isMusicLine_byCount, true)
+		XCTAssertEqual(songInC[2].isMusicLine_byCount, false)
 		XCTAssertEqual(songInG[0], transposedSong[0])
+		XCTAssertEqual(songInG, transposedSong)
 		XCTAssertEqual(songInC[0], "Chorus: C F G7 | Bb C | Em/G") // test line subscript
 	}
 	

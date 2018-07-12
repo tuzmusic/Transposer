@@ -32,6 +32,7 @@ struct MusicText {
 		(defNotContainsSymbols, .defNot),
 		(formTitles, .defNot),
 		]
+	static let separators = maybeContainsSymbols + probContainsSymbols
 	static let containsBothScores: [(strings: [String], isPart: IsMusic)] = [
 		(probContainsBothSymbols, .probably),
 		]
