@@ -14,8 +14,10 @@ struct MusicText {
 	}
 
 	static let probSymbols = ["|", "%", "...", "…", "||:", ":||", "||"]
-	static let maybeSymbols = [","]
+	static let maybeContainsSymbols = [","]
 	static let probContainsSymbols = ["...", "…", "#"]
+	static let formTitles = ["Verse", "Chorus", "Intro", "Bridge", "Interlude"]
+	static let formSeparators = [":"]
 	static let defNotContainsSymbols = ["!", "?", "$"]
 	static let probContainsBothSymbols = ["()"]
 	static let numbers = [1,2,3,4,5,6,7,8,9,0].map{String($0)}
@@ -24,31 +26,28 @@ struct MusicText {
 		(probSymbols, .probably)
 	]
 	static let containsScores: [(strings: [String], isPart: IsMusic)] = [
-		(maybeSymbols, .maybe),
+		(maybeContainsSymbols, .maybe),
 		(probContainsSymbols, .probably),
 		(numbers, .probably),
-		(defNotContainsSymbols, .defNot)
+		(defNotContainsSymbols, .defNot),
+		(formTitles, .defNot),
 		]
 	static let containsBothScores: [(strings: [String], isPart: IsMusic)] = [
 		(probContainsBothSymbols, .probably),
 		]
 	
-	static let formTitles = ["Verse", "Chorus", "Intro", "Bridge", "Interlude"]
-	static let formSeparators = [":"]
-	
 	static func evaluateComponentSymbols(in string: String) -> MusicText.IsMusic? {
 		// if this is only a symbol, that might tell us something
 		return MusicText.componentScores.first(where:) {$0.strings.contains(string)}?.isPart
-		return nil
 	}
 	
-	static func evaluateContainsSymbols(in string: String) -> MusicText.IsMusic? {
+	static func evaluateContainsSymbols(in sourceString: String) -> MusicText.IsMusic? {
 		// if it contains one of these symbols, that effects its likeliness to be music
 		for textType in MusicText.containsScores {
 			// Refactoring note:
 			// In "return textType.first(where:){string.contains(XXXX)}?.isPart", XXXX would have to be "one of the elements in the array"
-			for symbol in textType.strings {
-				if string.contains(symbol) { return textType.isPart }
+			for string in textType.strings {
+				if sourceString.contains(string) { return textType.isPart }
 			}
 		}
 		return nil
@@ -67,11 +66,6 @@ struct MusicText {
 		return nil
 	}
 	
-	static func evaluateFormTitles(in string: String) {
-		// find any form titles
-		// separate them? is that necessary? probably not? just evaluate the "word" which will include the colon
-		// note: anything that ends in a colon is probNot/defNot???
-	}
 }
 
 extension String {
@@ -87,6 +81,20 @@ extension String {
 		return .maybe
 	}
 	
+	var looksLikeMusic: Bool {
+		switch self.isMusic {
+		case .defNot, .probNot: return false
+		default: return true
+		}
+	}
+	
+	var isMusicLine_byCount: Bool {
+		let nonChordMinimum = 3
+		let components = self.split(separator: " ").map{String($0)}
+		let nonChords = components.filter {!$0.looksLikeMusic}
+		return !(nonChords.count >= nonChordMinimum)
+	}
+
 	func removeLeadingOrTrailingParens(from string: inout String) {
 		// remove any leading and/or trailing parens
 		if string.count > 1 {
@@ -99,23 +107,4 @@ extension String {
 		}
 	}
 	
-	var isMusicLine: Bool {
-		
-		return true
-		
-		let numberOfChordsForLineToBeMusic = 3
-		
-		let components = self.split(separator: " ").map{String($0)}
-		var chords = MusicLine()
-		for component in components {
-			if Chord(component) != nil {
-				chords.append(component)
-			}
-		}
-		
-		if chords.count >= numberOfChordsForLineToBeMusic {
-			return true
-		}
-		return false
-	}
 }

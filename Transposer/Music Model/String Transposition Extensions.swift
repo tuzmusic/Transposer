@@ -17,9 +17,8 @@ extension String {
 		var newComponents = MusicLine()
 		
 		for component in newString.split(separator: " ").map({String($0)}) {
-			if let chord = Chord(component) {
-				let newChord = chord.transpose(from: sourceKey, to: destKey)
-				newComponents.append(newChord.symbol)
+			if component.looksLikeMusic, let chord = Chord(component) {
+				newComponents.append(chord.transpose(from: sourceKey, to: destKey).symbol)
 			} else {
 				newComponents.append(component)
 			}

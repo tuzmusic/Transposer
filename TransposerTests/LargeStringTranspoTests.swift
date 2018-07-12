@@ -11,8 +11,7 @@ import XCTest
 
 class LargeStringTranspoTests: XCTestCase {
 	
-	func testWordWise() {
-		struct Strings {
+	struct Strings {
 		static let largeString = """
 Chorus: C F G7 | Bb C | Em/G
 Verse: A...G (A, Bb)
@@ -23,17 +22,25 @@ Chorus: G C D7 | F G | Bm/D
 Verse: E...D (E, F)
 Because you know I'm all about that bass.
 """
-		static let transposedLines = ["Chorus: G C D7 | F G | Bm/D", "Verse: E...D (E, F)", "Because you know I'm all about that bass."]
-		}
+	}
+	
+	let songInC = Song(Strings.largeString)
+	lazy var songInG = songInC.transposed(fromString: "C", toString: "G")!
+	let transposedSong = Song(Strings.transposedString)
+	
+	func testLines() {
+		XCTAssertEqual(songInC[0].isMusicLine_byCount, true)
+		XCTAssertEqual(songInG[0], transposedSong[0])
+		XCTAssertEqual(songInC[0], "Chorus: C F G7 | Bb C | Em/G") // test line subscript
+	}
+	
+	func testWordWise() {
 		
-		let song = Song(Strings.largeString)
+		XCTAssertEqual(songInC.text, Strings.largeString)
+		XCTAssertEqual(songInC.lines.count, 3)
 		
-		let result = song.transposed(fromString: "C", toString: "G")!
-		XCTAssertEqual(song.text, Strings.largeString)
-		XCTAssertEqual(song.lines.count, 3)
-		
-		XCTAssertEqual(result.lines[0], Strings.transposedLines[0])
-		XCTAssertEqual(result.text, Strings.transposedString)
+		XCTAssertEqual(songInG.lines[0], transposedSong[0])
+		XCTAssertEqual(songInG.text, Strings.transposedString)
 	}
 	
 }

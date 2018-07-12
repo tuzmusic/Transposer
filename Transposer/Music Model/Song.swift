@@ -23,6 +23,10 @@ class Song: Equatable {
 		return lh.text == rh.text
 	}
 	
+	subscript(x: Int) -> String {
+		return lines[x]
+	}
+	
 	var lines = MusicLine()
 	var text = String() {
 		didSet {
@@ -31,10 +35,9 @@ class Song: Equatable {
 	}
 	
 	func transposed(from sourceKey: Key, to destKey: Key) -> Song {
-		var newSong = Song()
 		var newText = ""
 		for line in self.lines {
-			if line.isMusicLine {
+			if line.isMusicLine_byCount {
 				newText.append(line.transpose(from: sourceKey, to: destKey) + "\n")
 			} else {
 				newText.append(line + "\n")

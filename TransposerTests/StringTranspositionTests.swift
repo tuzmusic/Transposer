@@ -33,6 +33,8 @@ class StringTranspositionTests: XCTestCase {
 		XCTAssertEqual(prob2.isMusic, .probably)
 		
 		XCTAssertEqual("Cool!".isMusic, .defNot)
+		XCTAssertEqual("Chorus".isMusic, .defNot)
+		XCTAssertEqual("Chorus".looksLikeMusic, false)
 	}
 	
 	func testStringIsPartScore() {
