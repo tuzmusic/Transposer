@@ -9,33 +9,53 @@
 import Foundation
 
 extension MusicText {
-	static func musicalComponents(from string: String) -> (components: [String], separator: String) {
-		var subcomponents = [string]
-		var separator = " "
-		for sep in MusicText.separators {
-			if string.contains(sep) {
-				subcomponents = string.components(separatedBy: sep)
-				separator = sep
+	static func musicalComponents(from string: String) -> [String] {
+		var components = [String]()
+		let start = string.startIndex
+		var currentComponent = ""
+		var i = 0
+		repeat {
+			let index = string.index(start, offsetBy: i)
+			var char = String(string[index])
+			
+			if Music.allNotes.contains(char) {
+				// Save the previous characters and reset currentComponent
+				components.append(currentComponent)
+				currentComponent = ""
+				
+				// If this isn't last character, check the next character to see if it's part of the note name.
+				if index != string.index(before: string.endIndex) {
+					let nextIndex = string.index(index, offsetBy: 1)
+					let nextChar = string[nextIndex]
+					if Music.accidentalSymbols.keys.contains(nextChar) {
+						char += String(nextChar)
+						i += 1
+					}
+				}
+				components.append(char)
+			} else {
+				currentComponent += char
 			}
-		}
-		return (subcomponents, separator)
+			i += 1
+		} while i < string.count
+		
+		components.append(currentComponent)
+		return components
 	}
 }
-	
-	extension String {
+
+extension String {
 	
 	func transpose(from sourceKey: Key, to destKey: Key) -> String {
+		
 		let newString = self
 		var newComponents = MusicLine()
 		
 		for component in newString.split(separator: " ").map({String($0)}) {
 			if component.looksLikeMusic {
-				let separated = MusicText.musicalComponents(from: component)
-				var newSubcomponents = [String]()
-				for subcomponent in separated.components {
-					newSubcomponents.append(Chord(subcomponent)?.transpose(from: sourceKey, to: destKey).symbol ?? "")
+				for subcomponent in MusicText.musicalComponents(from: component) {
+					newComponents.append(subcomponent.transpose(from: sourceKey, to: destKey))
 				}
-				newComponents.append(newSubcomponents.joined(separator: separated.separator))
 			} else {
 				newComponents.append(component)
 			}
@@ -48,5 +68,5 @@ extension MusicText {
 		guard let source = Key(sourceKey), let dest = Key(destKey) else { return nil }
 		return self.transpose(from: source, to: dest)
 	}
-
+	
 }

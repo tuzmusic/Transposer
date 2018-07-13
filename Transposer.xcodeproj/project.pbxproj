@@ -34,6 +34,17 @@
 		76B8D25620D1CE260074E71E /* TransposerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B8D25520D1CE260074E71E /* TransposerUITests.swift */; };
 		76BB9A6D20D6D2E400E53CE8 /* StringTranspositionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76BB9A6C20D6D2E400E53CE8 /* StringTranspositionTests.swift */; };
 		76BB9A6F20D6D41E00E53CE8 /* String Transposition Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76BB9A6E20D6D41E00E53CE8 /* String Transposition Extensions.swift */; };
+		76EA74AC20F817F200CD774B /* MusicFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76EA74A320F817F200CD774B /* MusicFramework.framework */; };
+		76EA74B120F817F200CD774B /* MusicFrameworkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EA74B020F817F200CD774B /* MusicFrameworkTests.swift */; };
+		76EA74B320F817F200CD774B /* MusicFramework.h in Headers */ = {isa = PBXBuildFile; fileRef = 76EA74A520F817F200CD774B /* MusicFramework.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		76EA74BA20F8184900CD774B /* Music.swift in Sources */ = {isa = PBXBuildFile; fileRef = 765ED5D020D1CFB7007ACCA5 /* Music.swift */; };
+		76EA74BB20F8184900CD774B /* MusicText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B861F120F13A31004EED26 /* MusicText.swift */; };
+		76EA74BC20F8184900CD774B /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = 765ED5D120D1CFB7007ACCA5 /* Note.swift */; };
+		76EA74BD20F8184900CD774B /* Key.swift in Sources */ = {isa = PBXBuildFile; fileRef = 765ED5D220D1CFB7007ACCA5 /* Key.swift */; };
+		76EA74BE20F8184900CD774B /* Chord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 765ED62820D43764007ACCA5 /* Chord.swift */; };
+		76EA74BF20F8184900CD774B /* String Transposition Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76BB9A6E20D6D41E00E53CE8 /* String Transposition Extensions.swift */; };
+		76EA74C020F8184900CD774B /* Song.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B861EF20F139E3004EED26 /* Song.swift */; };
+		76EA74C220F8240200CD774B /* Subcomponents tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EA74C120F8240200CD774B /* Subcomponents tests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +61,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = 76B8D23120D1CE250074E71E;
 			remoteInfo = Transposer;
+		};
+		76EA74AD20F817F200CD774B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 76B8D22A20D1CE250074E71E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 76EA74A220F817F200CD774B;
+			remoteInfo = MusicFramework;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -79,6 +97,13 @@
 		76B8D25720D1CE260074E71E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		76BB9A6C20D6D2E400E53CE8 /* StringTranspositionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringTranspositionTests.swift; sourceTree = "<group>"; };
 		76BB9A6E20D6D41E00E53CE8 /* String Transposition Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String Transposition Extensions.swift"; sourceTree = "<group>"; };
+		76EA74A320F817F200CD774B /* MusicFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MusicFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		76EA74A520F817F200CD774B /* MusicFramework.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MusicFramework.h; sourceTree = "<group>"; };
+		76EA74A620F817F200CD774B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		76EA74AB20F817F200CD774B /* MusicFrameworkTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MusicFrameworkTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		76EA74B020F817F200CD774B /* MusicFrameworkTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicFrameworkTests.swift; sourceTree = "<group>"; };
+		76EA74B220F817F200CD774B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		76EA74C120F8240200CD774B /* Subcomponents tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Subcomponents tests.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +125,21 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		76EA749F20F817F200CD774B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		76EA74A820F817F200CD774B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				76EA74AC20F817F200CD774B /* MusicFramework.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,6 +178,8 @@
 				76B8D23420D1CE250074E71E /* Transposer */,
 				76B8D24920D1CE260074E71E /* TransposerTests */,
 				76B8D25420D1CE260074E71E /* TransposerUITests */,
+				76EA74A420F817F200CD774B /* MusicFramework */,
+				76EA74AF20F817F200CD774B /* MusicFrameworkTests */,
 				76B8D23320D1CE250074E71E /* Products */,
 				765ED62620D1D165007ACCA5 /* Default-568h@2x.png */,
 				76B8D24120D1CE260074E71E /* Info.plist */,
@@ -150,6 +192,8 @@
 				76B8D23220D1CE250074E71E /* Transposer.app */,
 				76B8D24620D1CE260074E71E /* TransposerTests.xctest */,
 				76B8D25120D1CE260074E71E /* TransposerUITests.xctest */,
+				76EA74A320F817F200CD774B /* MusicFramework.framework */,
+				76EA74AB20F817F200CD774B /* MusicFrameworkTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -171,6 +215,7 @@
 				76B8D24A20D1CE260074E71E /* TransposerTests.swift */,
 				76BB9A6C20D6D2E400E53CE8 /* StringTranspositionTests.swift */,
 				766BBA6A20F29E27001566B1 /* LargeStringTranspoTests.swift */,
+				76EA74C120F8240200CD774B /* Subcomponents tests.swift */,
 				76B8D24C20D1CE260074E71E /* Info.plist */,
 			);
 			path = TransposerTests;
@@ -185,7 +230,36 @@
 			path = TransposerUITests;
 			sourceTree = "<group>";
 		};
+		76EA74A420F817F200CD774B /* MusicFramework */ = {
+			isa = PBXGroup;
+			children = (
+				76EA74A520F817F200CD774B /* MusicFramework.h */,
+				76EA74A620F817F200CD774B /* Info.plist */,
+			);
+			path = MusicFramework;
+			sourceTree = "<group>";
+		};
+		76EA74AF20F817F200CD774B /* MusicFrameworkTests */ = {
+			isa = PBXGroup;
+			children = (
+				76EA74B020F817F200CD774B /* MusicFrameworkTests.swift */,
+				76EA74B220F817F200CD774B /* Info.plist */,
+			);
+			path = MusicFrameworkTests;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		76EA74A020F817F200CD774B /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				76EA74B320F817F200CD774B /* MusicFramework.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
 		76B8D23120D1CE250074E71E /* Transposer */ = {
@@ -241,6 +315,42 @@
 			productReference = 76B8D25120D1CE260074E71E /* TransposerUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		76EA74A220F817F200CD774B /* MusicFramework */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 76EA74B420F817F200CD774B /* Build configuration list for PBXNativeTarget "MusicFramework" */;
+			buildPhases = (
+				76EA749E20F817F200CD774B /* Sources */,
+				76EA749F20F817F200CD774B /* Frameworks */,
+				76EA74A020F817F200CD774B /* Headers */,
+				76EA74A120F817F200CD774B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MusicFramework;
+			productName = MusicFramework;
+			productReference = 76EA74A320F817F200CD774B /* MusicFramework.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		76EA74AA20F817F200CD774B /* MusicFrameworkTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 76EA74B720F817F200CD774B /* Build configuration list for PBXNativeTarget "MusicFrameworkTests" */;
+			buildPhases = (
+				76EA74A720F817F200CD774B /* Sources */,
+				76EA74A820F817F200CD774B /* Frameworks */,
+				76EA74A920F817F200CD774B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				76EA74AE20F817F200CD774B /* PBXTargetDependency */,
+			);
+			name = MusicFrameworkTests;
+			productName = MusicFrameworkTests;
+			productReference = 76EA74AB20F817F200CD774B /* MusicFrameworkTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -262,6 +372,12 @@
 						CreatedOnToolsVersion = 9.4;
 						TestTargetID = 76B8D23120D1CE250074E71E;
 					};
+					76EA74A220F817F200CD774B = {
+						CreatedOnToolsVersion = 9.4.1;
+					};
+					76EA74AA20F817F200CD774B = {
+						CreatedOnToolsVersion = 9.4.1;
+					};
 				};
 			};
 			buildConfigurationList = 76B8D22D20D1CE250074E71E /* Build configuration list for PBXProject "Transposer" */;
@@ -280,6 +396,8 @@
 				76B8D23120D1CE250074E71E /* Transposer */,
 				76B8D24520D1CE260074E71E /* TransposerTests */,
 				76B8D25020D1CE260074E71E /* TransposerUITests */,
+				76EA74A220F817F200CD774B /* MusicFramework */,
+				76EA74AA20F817F200CD774B /* MusicFrameworkTests */,
 			);
 		};
 /* End PBXProject section */
@@ -304,6 +422,20 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		76B8D24F20D1CE260074E71E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		76EA74A120F817F200CD774B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		76EA74A920F817F200CD774B /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -342,6 +474,7 @@
 				765ED5DB20D1CFB7007ACCA5 /* Key.swift in Sources */,
 				765ED5D520D1CFB7007ACCA5 /* Music.swift in Sources */,
 				765ED5D820D1CFB7007ACCA5 /* Note.swift in Sources */,
+				76EA74C220F8240200CD774B /* Subcomponents tests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -357,6 +490,28 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		76EA749E20F817F200CD774B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				76EA74C020F8184900CD774B /* Song.swift in Sources */,
+				76EA74BF20F8184900CD774B /* String Transposition Extensions.swift in Sources */,
+				76EA74BB20F8184900CD774B /* MusicText.swift in Sources */,
+				76EA74BE20F8184900CD774B /* Chord.swift in Sources */,
+				76EA74BD20F8184900CD774B /* Key.swift in Sources */,
+				76EA74BA20F8184900CD774B /* Music.swift in Sources */,
+				76EA74BC20F8184900CD774B /* Note.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		76EA74A720F817F200CD774B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				76EA74B120F817F200CD774B /* MusicFrameworkTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -369,6 +524,11 @@
 			isa = PBXTargetDependency;
 			target = 76B8D23120D1CE250074E71E /* Transposer */;
 			targetProxy = 76B8D25220D1CE260074E71E /* PBXContainerItemProxy */;
+		};
+		76EA74AE20F817F200CD774B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 76EA74A220F817F200CD774B /* MusicFramework */;
+			targetProxy = 76EA74AD20F817F200CD774B /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -624,6 +784,100 @@
 			};
 			name = Release;
 		};
+		76EA74B520F817F200CD774B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = MS76ZC84AE;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = MusicFramework/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = tuzmusic.MusicFramework;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		76EA74B620F817F200CD774B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = MS76ZC84AE;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = MusicFramework/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = tuzmusic.MusicFramework;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		76EA74B820F817F200CD774B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = MS76ZC84AE;
+				INFOPLIST_FILE = MusicFrameworkTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = tuzmusic.MusicFrameworkTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		76EA74B920F817F200CD774B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = MS76ZC84AE;
+				INFOPLIST_FILE = MusicFrameworkTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = tuzmusic.MusicFrameworkTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -659,6 +913,24 @@
 			buildConfigurations = (
 				76B8D26120D1CE260074E71E /* Debug */,
 				76B8D26220D1CE260074E71E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		76EA74B420F817F200CD774B /* Build configuration list for PBXNativeTarget "MusicFramework" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				76EA74B520F817F200CD774B /* Debug */,
+				76EA74B620F817F200CD774B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		76EA74B720F817F200CD774B /* Build configuration list for PBXNativeTarget "MusicFrameworkTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				76EA74B820F817F200CD774B /* Debug */,
+				76EA74B920F817F200CD774B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

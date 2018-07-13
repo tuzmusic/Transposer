@@ -28,6 +28,13 @@ Because you know I'm all about that bass.
 	lazy var songInG = songInC.transposed(fromString: "C", toString: "G")!
 	let transposedSong = Song(Strings.transposedString)
 	
+	func testSubcomponents() {
+		let component1 = "A...G"
+		let component2 = "(A,"
+		XCTAssertEqual(MusicText.musicalComponents(from: component1).components.count, 3)
+		XCTAssertEqual(MusicText.musicalComponents(from: component2).components.count, 3)
+	}
+	
 	func testLine2() { // All the punctuation in line two should mess us up.
 		let line2Components = songInC[1].components(separatedBy: " ")
 		XCTAssertEqual(line2Components.map{$0.looksLikeMusic}, [false, true, true, true])

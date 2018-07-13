@@ -6,9 +6,9 @@ extension Array where Element == Note {
 	}
 }
 
-class Music {
+public class Music {
 	static let scalePatterns = ["major" : [0, 2, 4, 5, 7, 9, 11, 12]]
-	static let noteNames = [     ["C","B#"],
+	public static let noteNames = [     ["C","B#"],
 						    ["C#", "Db"],
 						    ["D"],
 						    ["D#", "Eb"],
@@ -21,6 +21,7 @@ class Music {
 						    ["A#", "Bb"],
 						    ["B", "Cb"]
 	]
+	public static let allNotes = noteNames.joined().joined(separator: " ").split(separator: " ").map{String($0)}
 	enum Accidental: Int {
 		case sharp = 1
 		case flat = -1

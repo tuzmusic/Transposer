@@ -19,8 +19,10 @@ struct MusicText {
 	static let formTitles = ["Verse", "Chorus", "Intro", "Bridge", "Interlude"]
 	static let formSeparators = [":"]
 	static let defNotContainsSymbols = ["!", "?", "$"]
-	static let probContainsBothSymbols = ["()"]
+	static let maybeContainsBothSymbols = ["()"]
 	static let numbers = [1,2,3,4,5,6,7,8,9,0].map{String($0)}
+
+	static let separators = maybeContainsSymbols + probContainsSymbols
 
 	static let componentScores: [(strings: [String], isPart: IsMusic)] = [
 		(probSymbols, .probably)
@@ -32,9 +34,8 @@ struct MusicText {
 		(defNotContainsSymbols, .defNot),
 		(formTitles, .defNot),
 		]
-	static let separators = maybeContainsSymbols + probContainsSymbols
 	static let containsBothScores: [(strings: [String], isPart: IsMusic)] = [
-		(probContainsBothSymbols, .probably),
+		(maybeContainsBothSymbols, .maybe),
 		]
 	
 	static func evaluateComponentSymbols(in string: String) -> MusicText.IsMusic? {
