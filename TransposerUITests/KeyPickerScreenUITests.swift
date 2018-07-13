@@ -7,6 +7,7 @@
 //
 
 import XCTest
+@testable import Transposer
 
 class KeyPickerScreenUITests: XCTestCase {
         
@@ -30,20 +31,17 @@ class KeyPickerScreenUITests: XCTestCase {
     
     func testExample() {
 		
+		let keyPickerVC = KeyPickerViewController()
+		let tablesQuery = XCUIApplication().tables
+		tablesQuery/*@START_MENU_TOKEN@*/.buttons["Cb"]/*[[".cells.buttons[\"Cb\"]",".buttons[\"Cb\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+		XCTAssertEqual(keyPickerVC.fromKey.name, "Cb")
+		tablesQuery/*@START_MENU_TOKEN@*/.buttons["Gb"]/*[[".cells.buttons[\"Gb\"]",".buttons[\"Gb\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+		XCTAssertEqual(keyPickerVC.fromKey.name, "Gb")
+		tablesQuery/*@START_MENU_TOKEN@*/.buttons["Db"]/*[[".cells.buttons[\"Db\"]",".buttons[\"Db\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+		XCTAssertEqual(keyPickerVC.fromKey.name, "Db")
+
 		
-		let kCellsQuery = XCUIApplication().tables.cells.containing(.button, identifier:"K#")
-		kCellsQuery.children(matching: .button).matching(identifier: "K#").element(boundBy: 15).tap()
-		kCellsQuery.children(matching: .button).matching(identifier: "K#").element(boundBy: 0).tap()
-		kCellsQuery.children(matching: .button).matching(identifier: "K#").element(boundBy: 1).tap()
-		kCellsQuery.children(matching: .button).matching(identifier: "K#").element(boundBy: 2).tap()
-		kCellsQuery.children(matching: .button).matching(identifier: "K#").element(boundBy: 3).tap()
-		kCellsQuery.children(matching: .button).matching(identifier: "K#").element(boundBy: 4).tap()
-		kCellsQuery.children(matching: .button).matching(identifier: "K#").element(boundBy: 5).tap()
-		kCellsQuery.children(matching: .button).matching(identifier: "K#").element(boundBy: 6).tap()
-		
-		
-//		fromButton[0].tap()
-//		XCTAssertEqual(keyPickerVC.fromKey, Key("C"))
+
 
 		// Use recording to get started writing UI tests.
         // Use XCTAssert and related functions to verify your tests produce the correct results.

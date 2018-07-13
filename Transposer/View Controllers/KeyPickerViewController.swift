@@ -10,41 +10,47 @@ import UIKit
 
 class KeyPickerViewController: UITableViewController {
 	
-	@IBOutlet var keyPickerTable: UITableView! {
+	@IBOutlet weak var keyPickerTable: UITableView! {
 		didSet {
 			keyPickerTable.contentInset = UIEdgeInsetsMake(30, 30, 30, 30)
 		}
 	}
 	@IBOutlet weak var allKeyStackView: UIStackView! {
-		didSet { configureButtons() }
+		didSet {
+			configureButtons()
+		}
 	}
+	
+	var fromKey: Key!
+	var toKey: Key!
+	
+	func configure(button: UIButton, number i: Int) {
+		// appearance
+		button.borderWidth = 1
+		button.borderColor = button.currentTitleColor
+		button.cornerRadius = 50
+		
+		
+		// label
+		// TO-DO: put keys in a nicer order
+		button.setTitle(i < Music.circleOfFifths.count ? String(Music.circleOfFifths[i].name!.split(separator: " ")[0]) : "", for: .normal)
+	
+		button.addTarget(self, action: #selector(setFromKey(sender:)), for: .touchUpInside)
+	}
+	
+	@objc func setFromKey(sender: UIButton) {
+		fromKey = Key(sender.titleLabel!.text!)
+	}
+	
 	func configureButtons() {
 		var i = 0
 		for row in allKeyStackView.subviews where row is UIStackView {
 			for buttonView in row.subviews where buttonView is UIButton {
-				let button = buttonView as! UIButton
-				
-				button.borderWidth = 1
-				button.borderColor = button.currentTitleColor
-				button.cornerRadius = 50
-				
-				if i < Music.circleOfFifths.count {
-					button.s`etTitle(String(Music.circleOfFifths[i].name!.split(separator: " ")[0]), for: .normal)
-					i += 1
-				} else {
-					button.setTitle("", for: .normal)
-				}
+				configure(button: buttonView as! UIButton, number: i)
+				i += 1
 			}
 		}
 	}
-	
-//	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//		if let cell = super.tableView.cellForRow(at: indexPath) {
-//			cell.separatorInset = UIEdgeInsetsMake(30, 30, 30, 30)
-//			return cell
-//		}
-//		return UITableViewCell()
-//	}
 	
 	override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
 		return tableView.bounds.size.height / 2
