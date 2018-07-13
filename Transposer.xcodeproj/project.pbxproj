@@ -45,6 +45,9 @@
 		76EA74BF20F8184900CD774B /* String Transposition Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76BB9A6E20D6D41E00E53CE8 /* String Transposition Extensions.swift */; };
 		76EA74C020F8184900CD774B /* Song.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B861EF20F139E3004EED26 /* Song.swift */; };
 		76EA74C220F8240200CD774B /* Subcomponents tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EA74C120F8240200CD774B /* Subcomponents tests.swift */; };
+		76EA74C420F8E22D00CD774B /* KeyPickerScreenUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EA74C320F8E22D00CD774B /* KeyPickerScreenUITests.swift */; };
+		76EA74C720F8E2FB00CD774B /* KeyPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EA74C620F8E2FB00CD774B /* KeyPickerViewController.swift */; };
+		76EA74C920F8E61F00CD774B /* UIButton Border Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EA74C820F8E61F00CD774B /* UIButton Border Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -104,6 +107,9 @@
 		76EA74B020F817F200CD774B /* MusicFrameworkTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicFrameworkTests.swift; sourceTree = "<group>"; };
 		76EA74B220F817F200CD774B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		76EA74C120F8240200CD774B /* Subcomponents tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Subcomponents tests.swift"; sourceTree = "<group>"; };
+		76EA74C320F8E22D00CD774B /* KeyPickerScreenUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyPickerScreenUITests.swift; sourceTree = "<group>"; };
+		76EA74C620F8E2FB00CD774B /* KeyPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyPickerViewController.swift; sourceTree = "<group>"; };
+		76EA74C820F8E61F00CD774B /* UIButton Border Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton Border Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -202,7 +208,8 @@
 			isa = PBXGroup;
 			children = (
 				76B8D23920D1CE250074E71E /* Main.storyboard */,
-				767820F420D6DA3E00EB678B /* TransposeTableViewController.swift */,
+				76EA74CA20F8E62500CD774B /* UI Extensions */,
+				76EA74C520F8E2DE00CD774B /* View Controllers */,
 				765ED5CF20D1CFB7007ACCA5 /* Music Model */,
 				765ED5CE20D1CF77007ACCA5 /* Original and Old Files */,
 			);
@@ -225,6 +232,7 @@
 			isa = PBXGroup;
 			children = (
 				76B8D25520D1CE260074E71E /* TransposerUITests.swift */,
+				76EA74C320F8E22D00CD774B /* KeyPickerScreenUITests.swift */,
 				76B8D25720D1CE260074E71E /* Info.plist */,
 			);
 			path = TransposerUITests;
@@ -246,6 +254,23 @@
 				76EA74B220F817F200CD774B /* Info.plist */,
 			);
 			path = MusicFrameworkTests;
+			sourceTree = "<group>";
+		};
+		76EA74C520F8E2DE00CD774B /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				767820F420D6DA3E00EB678B /* TransposeTableViewController.swift */,
+				76EA74C620F8E2FB00CD774B /* KeyPickerViewController.swift */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		76EA74CA20F8E62500CD774B /* UI Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				76EA74C820F8E61F00CD774B /* UIButton Border Extension.swift */,
+			);
+			path = "UI Extensions";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -449,6 +474,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				76EA74C920F8E61F00CD774B /* UIButton Border Extension.swift in Sources */,
 				767820F520D6DA3E00EB678B /* TransposeTableViewController.swift in Sources */,
 				76BB9A6F20D6D41E00E53CE8 /* String Transposition Extensions.swift in Sources */,
 				76B8D23820D1CE250074E71E /* ViewController.swift in Sources */,
@@ -459,6 +485,7 @@
 				765ED5D420D1CFB7007ACCA5 /* Music.swift in Sources */,
 				765ED5D720D1CFB7007ACCA5 /* Note.swift in Sources */,
 				765ED62920D43764007ACCA5 /* Chord.swift in Sources */,
+				76EA74C720F8E2FB00CD774B /* KeyPickerViewController.swift in Sources */,
 				76B861F220F13A31004EED26 /* MusicText.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -485,6 +512,7 @@
 				76B8D25620D1CE260074E71E /* TransposerUITests.swift in Sources */,
 				765ED62B20D43764007ACCA5 /* Chord.swift in Sources */,
 				765ED5DC20D1CFB7007ACCA5 /* Key.swift in Sources */,
+				76EA74C420F8E22D00CD774B /* KeyPickerScreenUITests.swift in Sources */,
 				765ED5D620D1CFB7007ACCA5 /* Music.swift in Sources */,
 				765ED5D920D1CFB7007ACCA5 /* Note.swift in Sources */,
 			);
