@@ -38,10 +38,11 @@ class Song: Equatable {
 		var newText = ""
 		for line in self.lines {
 			if line.isMusicLine_byCount {
-				newText.append(line.transpose(from: sourceKey, to: destKey) + "\n")
+				newText += line.transpose(from: sourceKey, to: destKey)
 			} else {
-				newText.append(line + "\n")
+				newText += line
 			}
+			if line != self.lines.last! { newText += "\n" }
 		}
 		return Song(newText)
 	}

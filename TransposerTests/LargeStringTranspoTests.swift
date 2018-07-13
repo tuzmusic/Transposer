@@ -33,6 +33,7 @@ Because you know I'm all about that bass.
 //		XCTAssertEqual(line2Components.map{$0.looksLikeMusic}, [false, true, true, true])
 		XCTAssertEqual("A...G".transpose(fromString: "C", toString: "G"), "E...D")
 		XCTAssertEqual(songInG[1], transposedSong[1])
+		XCTAssertEqual(songInG.text, transposedSong.text)
 	}
 	
 	func testLines() {
