@@ -19,17 +19,26 @@ class KeyPickerViewController: UITableViewController {
 				if let allKeysStackView = cell.subviews.first?.subviews.first as? UIStackView {
 					for row in allKeysStackView.subviews where row is UIStackView {
 						for buttonView in row.subviews where buttonView is UIButton {
-							configure(button: buttonView as! UIButton, number: i, toRatherThanFrom: false)
+							configure(button: buttonView as! UIButton, number: i, toRatherThanFrom: sect == 0 ? false : true)
 							i += 1
 						}
 					}
 				}
+				i = 0
 			}
 		}
 	}
 	
-	var fromKey: Key?
-	var toKey: Key?
+	var fromKey: Key? {
+		didSet {
+			print("fromKey = " + fromKey!.name!)
+		}
+	}
+	var toKey: Key? {
+		didSet {
+			print("toKey = " + toKey!.name!)
+		}
+	}
 	var fromButtons = [UIButton]()
 	var toButtons = [UIButton]()
 	
@@ -63,7 +72,7 @@ class KeyPickerViewController: UITableViewController {
 	}
 	
 	@objc func setToKey(button: UIButton) {
-		for b in fromButtons where b != button {
+		for b in toButtons where b != button {
 			b.isSelected = false
 		}
 		button.isSelected = !button.isSelected
