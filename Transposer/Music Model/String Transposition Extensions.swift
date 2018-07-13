@@ -53,9 +53,15 @@ extension String {
 		
 		for component in newString.split(separator: " ").map({String($0)}) {
 			if component.looksLikeMusic {
+				var newSubComponent = ""
 				for subcomponent in MusicText.musicalComponents(from: component) {
-					newComponents.append(subcomponent.transpose(from: sourceKey, to: destKey))
+					if let transposedNote = Note(subcomponent)?.transpose(from: sourceKey, to: destKey) {
+						newSubComponent += transposedNote.name
+					}  else {
+						newSubComponent += subcomponent
+					}
 				}
+				newComponents.append(newSubComponent)
 			} else {
 				newComponents.append(component)
 			}
