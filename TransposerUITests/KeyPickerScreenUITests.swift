@@ -7,6 +7,7 @@
 //
 
 import XCTest
+import UIKit
 @testable import Transposer
 
 class KeyPickerScreenUITests: XCTestCase {
@@ -34,11 +35,11 @@ class KeyPickerScreenUITests: XCTestCase {
 		let keyPickerVC = KeyPickerViewController()
 		let tablesQuery = XCUIApplication().tables
 		tablesQuery/*@START_MENU_TOKEN@*/.buttons["Cb"]/*[[".cells.buttons[\"Cb\"]",".buttons[\"Cb\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
-		XCTAssertEqual(keyPickerVC.fromKey.name, "Cb")
+		XCTAssertEqual(keyPickerVC.fromKey?.name, "Cb")
 		tablesQuery/*@START_MENU_TOKEN@*/.buttons["Gb"]/*[[".cells.buttons[\"Gb\"]",".buttons[\"Gb\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
-		XCTAssertEqual(keyPickerVC.fromKey.name, "Gb")
+		XCTAssertEqual(keyPickerVC.fromKey?.name, "Gb")
 		tablesQuery/*@START_MENU_TOKEN@*/.buttons["Db"]/*[[".cells.buttons[\"Db\"]",".buttons[\"Db\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
-		XCTAssertEqual(keyPickerVC.fromKey.name, "Db")
+		XCTAssertEqual(keyPickerVC.fromKey?.name, "Db")
 
 		
 

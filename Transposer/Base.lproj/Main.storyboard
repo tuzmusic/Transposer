@@ -143,9 +143,10 @@
                                                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="uTa-cI-Mg1" userLabel="row 1">
                                                             <rect key="frame" x="0.0" y="0.0" width="678" height="50.5"/>
                                                             <subviews>
-                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UCz-dj-zI8">
+                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UCz-dj-zI8" customClass="KeyButton" customModule="Transposer" customModuleProvider="target">
                                                                     <rect key="frame" x="0.0" y="0.0" width="154.5" height="50.5"/>
                                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                                                    <state key="normal" title="key"/>
                                                                     <userDefinedRuntimeAttributes>
                                                                         <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
                                                                             <real key="value" value="1"/>
@@ -158,10 +159,10 @@
                                                                         </userDefinedRuntimeAttribute>
                                                                     </userDefinedRuntimeAttributes>
                                                                 </button>
-                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="no9-eU-P9V">
+                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="no9-eU-P9V" customClass="KeyButton" customModule="Transposer" customModuleProvider="target">
                                                                     <rect key="frame" x="174.5" y="0.0" width="154.5" height="50.5"/>
                                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
-                                                                    <state key="normal" title="K#"/>
+                                                                    <state key="normal" title="key"/>
                                                                     <userDefinedRuntimeAttributes>
                                                                         <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
                                                                             <real key="value" value="1"/>
@@ -171,10 +172,10 @@
                                                                         </userDefinedRuntimeAttribute>
                                                                     </userDefinedRuntimeAttributes>
                                                                 </button>
-                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PvJ-A3-x8u">
+                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PvJ-A3-x8u" customClass="KeyButton" customModule="Transposer" customModuleProvider="target">
                                                                     <rect key="frame" x="349" y="0.0" width="154.5" height="50.5"/>
                                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
-                                                                    <state key="normal" title="K#"/>
+                                                                    <state key="normal" title="key"/>
                                                                     <userDefinedRuntimeAttributes>
                                                                         <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
                                                                             <real key="value" value="1"/>
@@ -184,10 +185,10 @@
                                                                         </userDefinedRuntimeAttribute>
                                                                     </userDefinedRuntimeAttributes>
                                                                 </button>
-                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XFI-Jd-mAT">
+                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XFI-Jd-mAT" customClass="KeyButton" customModule="Transposer" customModuleProvider="target">
                                                                     <rect key="frame" x="523.5" y="0.0" width="154.5" height="50.5"/>
                                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
-                                                                    <state key="normal" title="K#"/>
+                                                                    <state key="normal" title="key"/>
                                                                     <userDefinedRuntimeAttributes>
                                                                         <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
                                                                             <real key="value" value="1"/>
@@ -202,75 +203,75 @@
                                                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="rgy-7a-mGN" userLabel="row 2">
                                                             <rect key="frame" x="0.0" y="70.5" width="678" height="50"/>
                                                             <subviews>
-                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CMD-tT-nze">
+                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CMD-tT-nze" customClass="KeyButton" customModule="Transposer" customModuleProvider="target">
                                                                     <rect key="frame" x="0.0" y="0.0" width="154.5" height="50"/>
                                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
-                                                                    <state key="normal" title="K#"/>
+                                                                    <state key="normal" title="key"/>
                                                                 </button>
-                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tFU-FC-pK2">
+                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tFU-FC-pK2" customClass="KeyButton" customModule="Transposer" customModuleProvider="target">
                                                                     <rect key="frame" x="174.5" y="0.0" width="154.5" height="50"/>
                                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
-                                                                    <state key="normal" title="K#"/>
+                                                                    <state key="normal" title="key"/>
                                                                 </button>
-                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="shQ-QC-JRX">
+                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="shQ-QC-JRX" customClass="KeyButton" customModule="Transposer" customModuleProvider="target">
                                                                     <rect key="frame" x="349" y="0.0" width="154.5" height="50"/>
                                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
-                                                                    <state key="normal" title="K#"/>
+                                                                    <state key="normal" title="key"/>
                                                                 </button>
-                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eYw-Vj-wvu">
+                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eYw-Vj-wvu" customClass="KeyButton" customModule="Transposer" customModuleProvider="target">
                                                                     <rect key="frame" x="523.5" y="0.0" width="154.5" height="50"/>
                                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
-                                                                    <state key="normal" title="K#"/>
+                                                                    <state key="normal" title="key"/>
                                                                 </button>
                                                             </subviews>
                                                         </stackView>
                                                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="pcu-b9-1PF" userLabel="row 3">
                                                             <rect key="frame" x="0.0" y="140.5" width="678" height="50.5"/>
                                                             <subviews>
-                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7YY-o0-9MB">
+                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7YY-o0-9MB" customClass="KeyButton" customModule="Transposer" customModuleProvider="target">
                                                                     <rect key="frame" x="0.0" y="0.0" width="154.5" height="50.5"/>
                                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
-                                                                    <state key="normal" title="K#"/>
+                                                                    <state key="normal" title="key"/>
                                                                 </button>
-                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P9t-kh-jhu">
+                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P9t-kh-jhu" customClass="KeyButton" customModule="Transposer" customModuleProvider="target">
                                                                     <rect key="frame" x="174.5" y="0.0" width="154.5" height="50.5"/>
                                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
-                                                                    <state key="normal" title="K#"/>
+                                                                    <state key="normal" title="key"/>
                                                                 </button>
-                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nWl-rw-qWB">
+                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nWl-rw-qWB" customClass="KeyButton" customModule="Transposer" customModuleProvider="target">
                                                                     <rect key="frame" x="349" y="0.0" width="154.5" height="50.5"/>
                                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
-                                                                    <state key="normal" title="K#"/>
+                                                                    <state key="normal" title="key"/>
                                                                 </button>
-                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mww-jt-U6m">
+                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mww-jt-U6m" customClass="KeyButton" customModule="Transposer" customModuleProvider="target">
                                                                     <rect key="frame" x="523.5" y="0.0" width="154.5" height="50.5"/>
                                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
-                                                                    <state key="normal" title="K#"/>
+                                                                    <state key="normal" title="key"/>
                                                                 </button>
                                                             </subviews>
                                                         </stackView>
                                                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Dbw-pt-rnW" userLabel="row 4">
                                                             <rect key="frame" x="0.0" y="211" width="678" height="50"/>
                                                             <subviews>
-                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MGS-7K-oRX">
+                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MGS-7K-oRX" customClass="KeyButton" customModule="Transposer" customModuleProvider="target">
                                                                     <rect key="frame" x="0.0" y="0.0" width="154.5" height="50"/>
                                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
-                                                                    <state key="normal" title="K#"/>
+                                                                    <state key="normal" title="key"/>
                                                                 </button>
-                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0fa-el-TY7">
+                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0fa-el-TY7" customClass="KeyButton" customModule="Transposer" customModuleProvider="target">
                                                                     <rect key="frame" x="174.5" y="0.0" width="154.5" height="50"/>
                                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
-                                                                    <state key="normal" title="K#"/>
+                                                                    <state key="normal" title="key"/>
                                                                 </button>
-                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jdf-AF-emZ">
+                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jdf-AF-emZ" customClass="KeyButton" customModule="Transposer" customModuleProvider="target">
                                                                     <rect key="frame" x="349" y="0.0" width="154.5" height="50"/>
                                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
-                                                                    <state key="normal" title="K#"/>
+                                                                    <state key="normal" title="key"/>
                                                                 </button>
-                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0v3-W8-BIC">
+                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0v3-W8-BIC" customClass="KeyButton" customModule="Transposer" customModuleProvider="target">
                                                                     <rect key="frame" x="523.5" y="0.0" width="154.5" height="50"/>
                                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
-                                                                    <state key="normal" title="K#"/>
+                                                                    <state key="normal" title="key"/>
                                                                 </button>
                                                             </subviews>
                                                         </stackView>
