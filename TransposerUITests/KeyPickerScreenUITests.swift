@@ -30,22 +30,28 @@ class KeyPickerScreenUITests: XCTestCase {
         super.tearDown()
     }
     
-    func testExample() {
+    func testFromPicker() {
 		
-		let keyPickerVC = KeyPickerViewController()
-		let tablesQuery = XCUIApplication().tables
-		tablesQuery/*@START_MENU_TOKEN@*/.buttons["Cb"]/*[[".cells.buttons[\"Cb\"]",".buttons[\"Cb\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
-		XCTAssertEqual(keyPickerVC.fromKey?.name, "Cb")
-		tablesQuery/*@START_MENU_TOKEN@*/.buttons["Gb"]/*[[".cells.buttons[\"Gb\"]",".buttons[\"Gb\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
-		XCTAssertEqual(keyPickerVC.fromKey?.name, "Gb")
-		tablesQuery/*@START_MENU_TOKEN@*/.buttons["Db"]/*[[".cells.buttons[\"Db\"]",".buttons[\"Db\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
-		XCTAssertEqual(keyPickerVC.fromKey?.name, "Db")
+		let app = XCUIApplication()
+		let transposeNavigationBar = app.navigationBars["Transpose"]
+		let navButtons = transposeNavigationBar.buttons
+		let tablesQuery = app.tables
+		let keyList = tablesQuery.staticTexts
+		let popoverDismisser = app/*@START_MENU_TOKEN@*/.otherElements["PopoverDismissRegion"]/*[[".otherElements[\"dismiss popup\"]",".otherElements[\"PopoverDismissRegion\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
 
+		let fromKey = navButtons["'From' key"]
+		let toKey = navButtons["'To' key"]
 		
+		fromKey.tap()
+		keyList["C# major"].tap()
+		popoverDismisser.tap()
+		
+		toKey.tap()
+		keyList["E major"].tap()
+		popoverDismisser.tap()
 
-
-		// Use recording to get started writing UI tests.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+		tablesQuery/*@START_MENU_TOKEN@*/.buttons["Transpose"]/*[[".cells.buttons[\"Transpose\"]",".buttons[\"Transpose\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+		
     }
     
 }
