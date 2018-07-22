@@ -7,6 +7,7 @@
 //
 
 import XCTest
+@testable import Transposer
 
 class PickerUnitTests: XCTestCase {
     
@@ -21,7 +22,9 @@ class PickerUnitTests: XCTestCase {
     }
     
     func testPickers() {
-       
+      let transVC = TransposeTableViewController()
+		
+		//transVC.fromKeyTapped(transVC.navigationItem.rightBarButtonItems.first!)
     }
     
     func testPerformanceExample() {

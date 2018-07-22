@@ -50,7 +50,7 @@ Because you know I'm all about that bass.
 		XCTAssertEqual(songInC.text, Strings.largeString)
 		XCTAssertEqual(songInC.lines.count, 3)
 		
-		XCTAssertEqual(songInG.lines[0], transposedSong[0])
+		XCTAssertEqual(songInG[0], transposedSong[0])
 		XCTAssertEqual(songInG.text, Strings.transposedString)
 	}
 	

@@ -16,7 +16,18 @@ class Song: Equatable {
 	init() {}
 	init(_ text: String) {
 		self.text = text
-		self.lines = text.split(separator: "\n").map {String($0)}
+		var lines = [String]()
+		var currentLine: String = ""
+		for char in self.text {
+			currentLine += String(char)
+			if char == "\n" {
+				lines.append(currentLine)
+				currentLine = ""
+			}
+		}
+		lines.append(String(currentLine))
+		self.lines = lines
+		//self.lines = text.split(separator: "\n").map {String($0)}
 	}
 	
 	static func == (lh: Song, rh: Song) -> Bool {
@@ -24,7 +35,7 @@ class Song: Equatable {
 	}
 	
 	subscript(x: Int) -> String {
-		return lines[x]
+		return lines[x].components(separatedBy: "\n").first!
 	}
 	
 	var lines = MusicLine()
@@ -42,7 +53,7 @@ class Song: Equatable {
 			} else {
 				newText += line
 			}
-			if line != self.lines.last! { newText += "\n" }
+//			if line != self.lines.last! { newText += "\n" }
 		}
 		return Song(newText)
 	}
@@ -52,4 +63,26 @@ class Song: Equatable {
 		return self.transposed(from: source, to: dest)
 	}
 	
+}
+
+extension Song {
+	// MARK: Debugging functions
+	
+	func compare(to song2: Song, includePasses: Bool = true) {
+		print("")
+		for i in 0 ..< self.lines.count {
+			if self[i] == song2[i] {
+				if includePasses {
+					print("Line \(i) passed")
+				}
+			} else {
+				print("""
+					Conflict in line \(i) (\(self[i].isMusicLine_byCount ? "music" : "not music"))
+					Song 1:\t\(self[i])
+					Song 2:\t\(song2[i])
+					""")
+			}
+		}
+		print("")
+	}
 }

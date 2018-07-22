@@ -10,10 +10,52 @@ import XCTest
 @testable import Transposer
 
 class StringTranspositionTests: XCTestCase {
-
+	
+	func separateComponents(in string: String) -> [String] {
+		let separators = [" ", "\t"]
+		let allCharacters = Array(string).map{String($0)}
+		var components = [String]()
+		var currentComponent: String = ""
+		
+		for character in allCharacters {
+			guard !currentComponent.isEmpty else { currentComponent = character; continue}
+			if separators.contains(character) { // if this character is a separator
+				if currentComponent.hasSuffix(character) {  // if we're in a string of the same separator, continue the string
+					currentComponent += character
+				} else { // if we've been in a string of letters (or anything else) but now we have a separator, store the current component and start a new one
+					components.append(currentComponent)
+					currentComponent = character
+				}
+			} else { // if this character is not a separator (and the component is not empty)...
+				if let last = currentComponent.last, separators.contains(String(last)) {  // if this is a new string, after a separator
+					components.append(currentComponent)
+					currentComponent = character
+				} else {
+					currentComponent += character
+				}
+			}
+		}
+		components.append(currentComponent) // tack on the final component.
+		return components
+	}
+	
+//	func testSmallerComponents() {
+//		XCTAssertEqual("Hello there".separateComponents().count, 3)
+//		XCTAssertEqual("\t\tHello".separateComponents().count, 2)
+//		XCTAssertEqual("    Hello \t\t".separateComponents().count, 4)
+//	}
+	
+	
+	
 	let simpleTestString = "C F G7 | Bb C | Em/G"
 	let gmaj = Key("G")!
 	let cmaj = Key("C")!
+	
+	func testSlashStart() {
+		let str = "/A#"
+		XCTAssertTrue(str.looksLikeMusic)
+		XCTAssertTrue(str.isMusicLine_byCount)
+	}
 	
 	func testContainsBoth() {
 		XCTAssertEqual("C(#5)".isMusic, .probably) // contains, but doesn't start with, parens
@@ -39,7 +81,7 @@ class StringTranspositionTests: XCTestCase {
 	
 	func testStringIsPartScore() {
 		let probSym = "||:"
-		let maybeSym = "Chorus"
+		let form = "Chorus"
 		let probNotSym = "Verse"
 		let maybeChord = "Cm"
 		let probChord = "C#"
@@ -48,10 +90,10 @@ class StringTranspositionTests: XCTestCase {
 		XCTAssertEqual(probWord.isMusic, .maybe)
 		XCTAssertEqual(probChord.isMusic, .probably)
 		XCTAssertEqual(probSym.isMusic, .probably)
-		XCTAssertEqual(maybeSym.isMusic, .maybe)
+		XCTAssertEqual(form.isMusic, .defNot)
 		XCTAssertEqual(probNotSym.isMusic, .defNot)
 	}
-
+	
 	func testStringDivision() {
 		let components = simpleTestString.split(separator:" ")
 		Xtest(components.count, 8)

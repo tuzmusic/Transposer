@@ -39,7 +39,7 @@ extension MusicText {
 			i += 1
 		} while i < string.count
 		
-		components.append(currentComponent)
+		components.append(currentComponent) // add final component
 		return components
 	}
 }
@@ -47,18 +47,17 @@ extension MusicText {
 extension String {
 	
 	func transpose(from sourceKey: Key, to destKey: Key) -> String {
-		
-		let newString = self
+
+		let components = self.separateComponentsFromWhitespace()
 		var newComponents = MusicLine()
-		
-		for component in newString.split(separator: " ").map({String($0)}) {
+		for component in components {
 			if component.looksLikeMusic {
 				var newSubComponent = ""
-				for subcomponent in MusicText.musicalComponents(from: component) {
-					if let transposedNote = Note(subcomponent)?.transpose(from: sourceKey, to: destKey) {
+				for subComponent in MusicText.musicalComponents(from: component) {
+					if let transposedNote = Note(subComponent)?.transpose(from: sourceKey, to: destKey) {
 						newSubComponent += transposedNote.name
 					}  else {
-						newSubComponent += subcomponent
+						newSubComponent += subComponent
 					}
 				}
 				newComponents.append(newSubComponent)
@@ -67,12 +66,40 @@ extension String {
 			}
 		}
 		
-		return newComponents.joined(separator: " ")
+		return newComponents.joined()
 	}
 	
 	func transpose(fromString sourceKey: String, toString destKey: String) -> String? {
 		guard let source = Key(sourceKey), let dest = Key(destKey) else { return nil }
 		return self.transpose(from: source, to: dest)
+	}
+	
+	func separateComponentsFromWhitespace() -> [String] {
+		let separators = [" ", "\t", "-"]
+		let allCharacters = Array(self).map{String($0)}
+		var components = [String]()
+		var currentComponent: String = ""
+		
+		for character in allCharacters {
+			guard !currentComponent.isEmpty else { currentComponent = character; continue}
+			if separators.contains(character) { // if this character is a separator
+				if currentComponent.hasSuffix(character) {  // if we're in a string of the same separator, continue the string
+					currentComponent += character
+				} else { // if we've been in a string of letters (or anything else) but now we have a separator, store the current component and start a new one
+					components.append(currentComponent)
+					currentComponent = character
+				}
+			} else { // if this character is not a separator (and the component is not empty)...
+				if let last = currentComponent.last, separators.contains(String(last)) {  // if this is a new string, after a separator
+					components.append(currentComponent)
+					currentComponent = character
+				} else {
+					currentComponent += character
+				}
+			}
+		}
+		components.append(currentComponent) // tack on the final component.
+		return components
 	}
 	
 }

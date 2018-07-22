@@ -23,7 +23,8 @@ struct MusicText {
 	static let numbers = [1,2,3,4,5,6,7,8,9,0].map{String($0)}
 
 	static let separators = maybeContainsSymbols + probContainsSymbols
-
+	static let headers_Trailers: [Character] = ["/"]
+	
 	static let componentScores: [(strings: [String], isPart: IsMusic)] = [
 		(probSymbols, .probably)
 	]
@@ -73,7 +74,7 @@ struct MusicText {
 extension String {
 	var isMusic: MusicText.IsMusic {
 		var heartStr = self
-		removeLeadingOrTrailingParens(from: &heartStr)
+		removeLeadingOrTrailingItems(from: &heartStr)
 		if let score = MusicText.evaluateComponentSymbols(in: heartStr) { return score }
 		if Chord(heartStr) == nil { return .defNot }
 		
@@ -92,14 +93,18 @@ extension String {
 	
 	var isMusicLine_byCount: Bool {
 		let nonChordMinimum = 3
-		let components = self.split(separator: " ").map{String($0)}
-		let nonChords = components.filter {!$0.looksLikeMusic}
-		return !(nonChords.count >= nonChordMinimum)
+		let components = self.separateComponentsFromWhitespace().map{String($0)}
+		let nonChords = components.filter {
+			$0.filter{char in [" ","\t","\n","-"].contains(char)}.isEmpty && !$0.looksLikeMusic
+		}
+		return nonChords.count < nonChordMinimum
 	}
 
-	func removeLeadingOrTrailingParens(from string: inout String) {
+	func removeLeadingOrTrailingItems(from string: inout String) {
 		// remove any leading and/or trailing parens
 		if string.count > 1 {
+			while MusicText.headers_Trailers.contains(string.first!) { string.removeFirst() }
+			while MusicText.headers_Trailers.contains(string.last!) { string.removeLast() }
 			for textType in MusicText.containsBothScores {
 				for sym in textType.strings {
 					if string.first == sym.first { string.removeFirst() }
