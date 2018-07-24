@@ -26,13 +26,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Transposer/Music Model/String Transposition Extensions.swift"
-            timestampString = "553971128.686053"
+            timestampString = "554127095.509447"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "67"
             endingLineNumber = "67"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            landmarkName = "transpose(from:to:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -42,13 +42,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Transposer/Music Model/String Transposition Extensions.swift"
-            timestampString = "553971128.68663"
+            timestampString = "554127095.509944"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "83"
             endingLineNumber = "83"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            landmarkName = "separateComponentsFromWhitespace()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -58,13 +58,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TransposerTests/FullSongTests/BigStringTests.swift"
-            timestampString = "553971128.687044"
+            timestampString = "554127095.5103101"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "102"
             endingLineNumber = "102"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            landmarkName = "testLineWithHyphens()"
+            landmarkType = "7">
             <Locations>
                <Location
                   shouldBeEnabled = "No"
@@ -121,13 +121,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "TransposerTests/FullSongTests/BigStringTests.swift"
-            timestampString = "553971128.68747"
+            timestampString = "554127095.51063"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "137"
             endingLineNumber = "137"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            landmarkName = "testRollToMe()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -138,13 +138,13 @@
             condition = "self.hasPrefix(&quot;Verse&quot;)"
             continueAfterRunningActions = "No"
             filePath = "Transposer/Music Model/String Transposition Extensions.swift"
-            timestampString = "553971128.68797"
+            timestampString = "554127095.510905"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "54"
             endingLineNumber = "54"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            landmarkName = "transpose(from:to:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -154,13 +154,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Transposer/Music Model/MusicText.swift"
-            timestampString = "553971128.688767"
+            timestampString = "554127095.511158"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "76"
             endingLineNumber = "76"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            landmarkName = "isMusic"
+            landmarkType = "24">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -187,13 +187,61 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Transposer/Music Model/MusicText.swift"
-            timestampString = "553971128.689733"
+            timestampString = "554127095.511536"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "100"
             endingLineNumber = "100"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            landmarkName = "isMusicLine_byCount"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TransposerTests/FullSongTests/LoopedSongTests.swift"
+            timestampString = "554127095.512097"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "50"
+            endingLineNumber = "50"
+            landmarkName = "matches(for:in:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "TransposerTests.LoopedSongTests.matches(for: Swift.String, in: Swift.String) -&gt; Swift.Array&lt;Swift.String&gt;"
+                  moduleName = "TransposerTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/TuzsNewMacBook/Library/Mobile%20Documents/com~apple~CloudDocs/Misc%20Stuff%20-%20iCloud%20drive/Programming/Swift/My%20Apps/Transposer/TransposerTests/FullSongTests/LoopedSongTests.swift"
+                  timestampString = "554092768.428556"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "50"
+                  endingLineNumber = "50"
+                  offsetFromSymbolStart = "820">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (__ObjC.NSTextCheckingResult) -&gt; Swift.String in TransposerTests.LoopedSongTests.matches(for: Swift.String, in: Swift.String) -&gt; Swift.Array&lt;Swift.String&gt;"
+                  moduleName = "TransposerTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/TuzsNewMacBook/Library/Mobile%20Documents/com~apple~CloudDocs/Misc%20Stuff%20-%20iCloud%20drive/Programming/Swift/My%20Apps/Transposer/TransposerTests/FullSongTests/LoopedSongTests.swift"
+                  timestampString = "554092768.43266"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "51"
+                  endingLineNumber = "51"
+                  offsetFromSymbolStart = "40">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
