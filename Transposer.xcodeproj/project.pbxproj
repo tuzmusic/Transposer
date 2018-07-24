@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		5278A41F20FC413E00177B0C /* KeyPickerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5278A41E20FC413E00177B0C /* KeyPickerTableViewController.swift */; };
-		761229EE210638F2004B2432 /* Roll To Me.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 76BAD6F12106106700351C4C /* Roll To Me.rtf */; };
 		761229F321063A43004B2432 /* Roll To Me.txt in Resources */ = {isa = PBXBuildFile; fileRef = 761229F221063A43004B2432 /* Roll To Me.txt */; };
 		761229F421063A43004B2432 /* Roll To Me.txt in Resources */ = {isa = PBXBuildFile; fileRef = 761229F221063A43004B2432 /* Roll To Me.txt */; };
 		765ED5D420D1CFB7007ACCA5 /* Music.swift in Sources */ = {isa = PBXBuildFile; fileRef = 765ED5D020D1CFB7007ACCA5 /* Music.swift */; };
@@ -39,7 +38,6 @@
 		76B8D24B20D1CE260074E71E /* TransposerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B8D24A20D1CE260074E71E /* TransposerTests.swift */; };
 		76B8D25620D1CE260074E71E /* TransposerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B8D25520D1CE260074E71E /* TransposerUITests.swift */; };
 		76BAD6EB21060A3500351C4C /* LoopedSongTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76BAD6EA21060A3500351C4C /* LoopedSongTests.swift */; };
-		76BAD6F22106106800351C4C /* Roll To Me.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 76BAD6F12106106700351C4C /* Roll To Me.rtf */; };
 		76BB9A6D20D6D2E400E53CE8 /* StringTranspositionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76BB9A6C20D6D2E400E53CE8 /* StringTranspositionTests.swift */; };
 		76BB9A6F20D6D41E00E53CE8 /* String Transposition Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76BB9A6E20D6D41E00E53CE8 /* String Transposition Extensions.swift */; };
 		76EA74AC20F817F200CD774B /* MusicFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76EA74A320F817F200CD774B /* MusicFramework.framework */; };
@@ -112,7 +110,6 @@
 		76B8D25520D1CE260074E71E /* TransposerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransposerUITests.swift; sourceTree = "<group>"; };
 		76B8D25720D1CE260074E71E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		76BAD6EA21060A3500351C4C /* LoopedSongTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoopedSongTests.swift; sourceTree = "<group>"; };
-		76BAD6F12106106700351C4C /* Roll To Me.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = "Roll To Me.rtf"; sourceTree = "<group>"; };
 		76BB9A6C20D6D2E400E53CE8 /* StringTranspositionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringTranspositionTests.swift; sourceTree = "<group>"; };
 		76BB9A6E20D6D41E00E53CE8 /* String Transposition Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String Transposition Extensions.swift"; sourceTree = "<group>"; };
 		76EA74A320F817F200CD774B /* MusicFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MusicFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -232,7 +229,6 @@
 			isa = PBXGroup;
 			children = (
 				76B8D23C20D1CE260074E71E /* Assets.xcassets */,
-				76BAD6F3210616A700351C4C /* Resources */,
 				76B8D23920D1CE250074E71E /* Main.storyboard */,
 				76EA74CA20F8E62500CD774B /* UI Extensions and Elements */,
 				76EA74C520F8E2DE00CD774B /* View Controllers */,
@@ -273,14 +269,6 @@
 				761229F221063A43004B2432 /* Roll To Me.txt */,
 			);
 			path = "Test Song Texts";
-			sourceTree = "<group>";
-		};
-		76BAD6F3210616A700351C4C /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				76BAD6F12106106700351C4C /* Roll To Me.rtf */,
-			);
-			path = Resources;
 			sourceTree = "<group>";
 		};
 		76EA74A420F817F200CD774B /* MusicFramework */ = {
@@ -482,7 +470,6 @@
 				76B8D24020D1CE260074E71E /* LaunchScreen.storyboard in Resources */,
 				765ED62720D1D165007ACCA5 /* Default-568h@2x.png in Resources */,
 				761229F321063A43004B2432 /* Roll To Me.txt in Resources */,
-				761229EE210638F2004B2432 /* Roll To Me.rtf in Resources */,
 				76B8D23D20D1CE260074E71E /* Assets.xcassets in Resources */,
 				76B8D23B20D1CE250074E71E /* Main.storyboard in Resources */,
 			);
@@ -493,7 +480,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				761229F421063A43004B2432 /* Roll To Me.txt in Resources */,
-				76BAD6F22106106800351C4C /* Roll To Me.rtf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
