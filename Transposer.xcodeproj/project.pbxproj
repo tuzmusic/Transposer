@@ -10,6 +10,12 @@
 		5278A41F20FC413E00177B0C /* KeyPickerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5278A41E20FC413E00177B0C /* KeyPickerTableViewController.swift */; };
 		761229F321063A43004B2432 /* Roll To Me.txt in Resources */ = {isa = PBXBuildFile; fileRef = 761229F221063A43004B2432 /* Roll To Me.txt */; };
 		761229F421063A43004B2432 /* Roll To Me.txt in Resources */ = {isa = PBXBuildFile; fileRef = 761229F221063A43004B2432 /* Roll To Me.txt */; };
+		762176EF210B883200421FD4 /* All For You.txt in Resources */ = {isa = PBXBuildFile; fileRef = 762176EC210B883200421FD4 /* All For You.txt */; };
+		762176F0210B883200421FD4 /* All For You.txt in Resources */ = {isa = PBXBuildFile; fileRef = 762176EC210B883200421FD4 /* All For You.txt */; };
+		762176F1210B883200421FD4 /* Send Me On My Way.txt in Resources */ = {isa = PBXBuildFile; fileRef = 762176ED210B883200421FD4 /* Send Me On My Way.txt */; };
+		762176F2210B883200421FD4 /* Send Me On My Way.txt in Resources */ = {isa = PBXBuildFile; fileRef = 762176ED210B883200421FD4 /* Send Me On My Way.txt */; };
+		762176F3210B883200421FD4 /* Dead Or Alive.txt in Resources */ = {isa = PBXBuildFile; fileRef = 762176EE210B883200421FD4 /* Dead Or Alive.txt */; };
+		762176F4210B883200421FD4 /* Dead Or Alive.txt in Resources */ = {isa = PBXBuildFile; fileRef = 762176EE210B883200421FD4 /* Dead Or Alive.txt */; };
 		765ED5D420D1CFB7007ACCA5 /* Music.swift in Sources */ = {isa = PBXBuildFile; fileRef = 765ED5D020D1CFB7007ACCA5 /* Music.swift */; };
 		765ED5D520D1CFB7007ACCA5 /* Music.swift in Sources */ = {isa = PBXBuildFile; fileRef = 765ED5D020D1CFB7007ACCA5 /* Music.swift */; };
 		765ED5D620D1CFB7007ACCA5 /* Music.swift in Sources */ = {isa = PBXBuildFile; fileRef = 765ED5D020D1CFB7007ACCA5 /* Music.swift */; };
@@ -84,6 +90,9 @@
 /* Begin PBXFileReference section */
 		5278A41E20FC413E00177B0C /* KeyPickerTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyPickerTableViewController.swift; sourceTree = "<group>"; };
 		761229F221063A43004B2432 /* Roll To Me.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Roll To Me.txt"; sourceTree = "<group>"; };
+		762176EC210B883200421FD4 /* All For You.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "All For You.txt"; sourceTree = "<group>"; };
+		762176ED210B883200421FD4 /* Send Me On My Way.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Send Me On My Way.txt"; sourceTree = "<group>"; };
+		762176EE210B883200421FD4 /* Dead Or Alive.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Dead Or Alive.txt"; sourceTree = "<group>"; };
 		765ED5D020D1CFB7007ACCA5 /* Music.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Music.swift; sourceTree = "<group>"; };
 		765ED5D120D1CFB7007ACCA5 /* Note.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
 		765ED5D220D1CFB7007ACCA5 /* Key.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Key.swift; sourceTree = "<group>"; };
@@ -266,6 +275,9 @@
 		76BAD6EC21060CD900351C4C /* Test Song Texts */ = {
 			isa = PBXGroup;
 			children = (
+				762176EC210B883200421FD4 /* All For You.txt */,
+				762176EE210B883200421FD4 /* Dead Or Alive.txt */,
+				762176ED210B883200421FD4 /* Send Me On My Way.txt */,
 				761229F221063A43004B2432 /* Roll To Me.txt */,
 			);
 			path = "Test Song Texts";
@@ -468,10 +480,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				76B8D24020D1CE260074E71E /* LaunchScreen.storyboard in Resources */,
+				762176F1210B883200421FD4 /* Send Me On My Way.txt in Resources */,
 				765ED62720D1D165007ACCA5 /* Default-568h@2x.png in Resources */,
 				761229F321063A43004B2432 /* Roll To Me.txt in Resources */,
 				76B8D23D20D1CE260074E71E /* Assets.xcassets in Resources */,
+				762176EF210B883200421FD4 /* All For You.txt in Resources */,
 				76B8D23B20D1CE250074E71E /* Main.storyboard in Resources */,
+				762176F3210B883200421FD4 /* Dead Or Alive.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -479,7 +494,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				762176F0210B883200421FD4 /* All For You.txt in Resources */,
+				762176F2210B883200421FD4 /* Send Me On My Way.txt in Resources */,
 				761229F421063A43004B2432 /* Roll To Me.txt in Resources */,
+				762176F4210B883200421FD4 /* Dead Or Alive.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

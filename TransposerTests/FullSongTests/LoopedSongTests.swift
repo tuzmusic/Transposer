@@ -21,7 +21,9 @@ class LoopedSongTests: XCTestCase {
 	let bundles = [SongBundle]()
 	
 	func testSongs() {
-		let bundles = testSongTitles.map { bundle(for: $0) }
+		let paths = Bundle.main.paths(forResourcesOfType: "txt", inDirectory: nil)
+		let strings = paths.map { try? String(contentsOfFile: $0) }
+		let bundles = strings.map { bundle(for: $0) }
 		for bundle in bundles {
 			guard let bundle = bundle else { continue }
 			let song = Song(bundle.songText)
@@ -39,6 +41,12 @@ class LoopedSongTests: XCTestCase {
 	
 	var testSongTitles = ["Roll To Me"]
 	
+	func testGetFiles() {
+		let paths = Bundle.main.paths(forResourcesOfType: "txt", inDirectory: nil)
+		XCTAssertEqual(paths.count, 4)
+		
+	}
+	
 	func getTextFor(_ title: String) -> String? {
 		guard let path = Bundle.main.path(forResource: title, ofType: "txt"),
 			let fullText = try? String(contentsOfFile: path) else { return nil }
@@ -46,28 +54,20 @@ class LoopedSongTests: XCTestCase {
 		return fullText
 	}
 	
-	func bundle(for filename: String) -> SongBundle? {
-		guard let string = getTextFor(filename) else {
-			print("Could not get text from '\(filename)'")
-			return nil
-		}
+	func bundle(for string: String) -> SongBundle? {
 		let pattern = "SOURCEKEY:([A-Z])\\s+((.|\\n)*)DESTKEY:([A-Z])\\s+((.|\\n)*)"
-		var entireText, sourceKey, songText, destKey, expectedText: String!
-		do {
-			let regex = try NSRegularExpression(pattern: pattern)
-			if let match = regex.firstMatch(in: string, range: NSRange(string.startIndex..<string.endIndex, in: string)) {
-				entireText = String(string[Range(match.range, in: string)!]) // prints the entire match ignoring the captured groups
-				sourceKey = String(string[Range(match.range(at:1), in: string)!])
-				songText = String(string[Range(match.range(at:2), in: string)!])
-				destKey = String(string[Range(match.range(at:4), in: string)!])
-				expectedText = String(string[Range(match.range(at:5), in: string)!])
-			} else {
-				print("Not Found")
-			}
-		} catch {
-			print("Regex Error:", error)
-		}
-		return SongBundle(entireText: entireText, songText: songText, expectedText: expectedText, sourceKeyStr: sourceKey, destKeyStr: destKey)
+		let regex = try! NSRegularExpression(pattern: pattern)
+		guard let match = regex.firstMatch(in: string, range: NSRange(string.startIndex..<string.endIndex, in: string))
+			else { return nil }
+//		var sourceKey = Stringm(string[Range(match.range(at:1), in: string)!])
+//		var songText = String(string[Range(match.range(at:2), in: string)!])
+//		var destKey = String(string[Range(match.range(at:4), in: string)!])
+//		var expectedText = String(string[Range(match.range(at:5), in: string)!])
+		return SongBundle(entireText: string,
+								songText: String(string[Range(match.range(at:2), in: string)!]),
+								expectedText: String(string[Range(match.range(at:5), in: string)!]),
+								sourceKeyStr: String(string[Range(match.range(at:1), in: string)!]),
+								destKeyStr: String(string[Range(match.range(at:4), in: string)!]))
 	}
 	
 	func matches(for regex: String, in text: String) -> [String] {
